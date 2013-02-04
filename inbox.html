@@ -21,10 +21,9 @@
       }
  
       tr:hover {
-          background-color: #ccc
+          background-color: #ccc;
       }
-
-
+     
     </style>
 
     <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
@@ -43,52 +42,26 @@
   <body>
     <div class="container">
     <div class="row-fluid">
-    <div class="span2">
-	<h2>Menu</h2>
-    <!--Sidebar content-->
-   <ul class="nav nav-list">
-    <li><a href="#"><i class="i"></i>Create Message</a></li>
 
-    <li class="active"><a href="#"><i class="icon-home icon-white"></i>Inbox</a></li>
-    <li><a href="#"><i class="icon-book"></i>Contacts</a></li>
-    <li><a href="#"><i class="icon-pencil"></i>Settings</a></li>
-    </ul>       
-</div>
-    <div class="span10">
+    <div class="span12">
+    <ul class="nav nav-tabs">
+    <li class="active">
+    <a href="#">Inbox</a>
+    </li>
+    <li><a href="#">Contacts</a></li>
+    <li><a href="#">Settings</a></li>
+    </ul>
 	<h2>Inbox</h2>
-	<table class="table"  data-provides="rowlink" >  
-        <thead>  
-          <tr>  
-            <th>From</th>  
-            <th>Subject</th>  
-            <th>Date</th>  
-          </tr>  
-        </thead>  
-        <tbody>  
-          <tr>  
-            <td><a href="#">Henry</a></td>  
-            <td>Secrets</td>  
-            <td>10/01/13</td>  
-          </tr>  
-          <tr>  
-            <td><a href="#">Henry</a></td>  
-            <td>Test</td>  
-            <td>05/01/13</td>  
-          </tr>  
-          <tr>  
-            <td><a href="#">Stu</a></td>  
-            <td>Coursework</td>  
-            <td>09/10/12</td>  
-          </tr>  
-        </tbody>  
-      </table>  
+        <div id="table1"></div>
 
-        
+
+             </div>
+    </div>
+    </div>
+
+ 
     <!--Body content-->
-    </div>
-    </div>
-    </div>
-
+ 
     <!-- Le javascript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
@@ -98,8 +71,7 @@
 
     
     <script src="getConversations.js"></script>
-    
-
+ 
   </body>
 </html>
 
