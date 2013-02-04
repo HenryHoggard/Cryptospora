@@ -7,12 +7,12 @@
    "tabs", "proxy","background",  "http://*/*", "https://*/*"
 ],
  "content_scripts": [ {
-    "js": [ "jquery.min.js" ],
+    "js": [ "bootstrap/js/jquery.js" ],
     "matches": [ "http://*/*", "https://*/*"]
   }],
   "options_page": "options.html",
 "browser_action": {
     "default_icon": "icon.png",
-    "default_popup": "popup.html" 
+    "default_popup": "inbox.html" 
  }
 }

@@ -19,6 +19,10 @@
         padding-bottom: 40px;
         background-color: #f5f5f5;
       }
+ 
+      tr:hover {
+          background-color: #ccc
+      }
 
 
     </style>
@@ -42,11 +46,17 @@
     <div class="span2">
 	<h2>Menu</h2>
     <!--Sidebar content-->
-<p> <button class="btn btn-primary" type="button">Default button</button></p>
-    </div>
+   <ul class="nav nav-list">
+    <li><a href="#"><i class="i"></i>Create Message</a></li>
+
+    <li class="active"><a href="#"><i class="icon-home icon-white"></i>Inbox</a></li>
+    <li><a href="#"><i class="icon-book"></i>Contacts</a></li>
+    <li><a href="#"><i class="icon-pencil"></i>Settings</a></li>
+    </ul>       
+</div>
     <div class="span10">
 	<h2>Inbox</h2>
-	<table class="table">  
+	<table class="table"  data-provides="rowlink" >  
         <thead>  
           <tr>  
             <th>From</th>  
@@ -56,23 +66,24 @@
         </thead>  
         <tbody>  
           <tr>  
-            <td>Henry</td>  
+            <td><a href="#">Henry</a></td>  
             <td>Secrets</td>  
             <td>10/01/13</td>  
           </tr>  
           <tr>  
-            <td>Henry</td>  
+            <td><a href="#">Henry</a></td>  
             <td>Test</td>  
             <td>05/01/13</td>  
           </tr>  
           <tr>  
-            <td>Stu</td>  
+            <td><a href="#">Stu</a></td>  
             <td>Coursework</td>  
             <td>09/10/12</td>  
           </tr>  
         </tbody>  
       </table>  
 
+        
     <!--Body content-->
     </div>
     </div>
@@ -81,19 +92,13 @@
     <!-- Le javascript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
-    <script src="../assets/js/jquery.js"></script>
-    <script src="../assets/js/bootstrap-transition.js"></script>
-    <script src="../assets/js/bootstrap-alert.js"></script>
-    <script src="../assets/js/bootstrap-modal.js"></script>
-    <script src="../assets/js/bootstrap-dropdown.js"></script>
-    <script src="../assets/js/bootstrap-scrollspy.js"></script>
-    <script src="../assets/js/bootstrap-tab.js"></script>
-    <script src="../assets/js/bootstrap-tooltip.js"></script>
-    <script src="../assets/js/bootstrap-popover.js"></script>
-    <script src="../assets/js/bootstrap-button.js"></script>
-    <script src="../assets/js/bootstrap-collapse.js"></script>
-    <script src="../assets/js/bootstrap-carousel.js"></script>
-    <script src="../assets/js/bootstrap-typeahead.js"></script>
+    <script src="bootstrap/js/jquery.js"></script>
+    <script src="bootstrap/js/bootstrap.min.js"></script>
+    <script src="bootstrap/js/bootstrap-rowlink.js"></script>
+
+    
+    <script src="getConversations.js"></script>
+    
 
   </body>
 </html>
