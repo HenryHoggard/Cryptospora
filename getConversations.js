@@ -4,7 +4,7 @@ $.getJSON("https://pod.cscf.me/conversations.json", function(json) {
         $.each(message, function() {
             table += "<tr><td> <input type=\"checkbox\"></td>";
 
-            table += "<td><a href=\"#" + message.conversation.id + "\">test</a></td>";
+            table += "<td><a href=\"#" + message.conversation.id + "\">Username</a></td>";
             table += "<td>" + message.conversation.subject + "</td>";
             table += "<td>" + message.conversation.updated_at + "</td></tr>";
         });
