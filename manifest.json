@@ -7,7 +7,7 @@
    "tabs", "proxy","background",  "http://*/*", "https://*/*"
 ],
  "content_scripts": [ {
-    "js": [ "bootstrap/js/jquery.js" ],
+    "js": [ "jquery.min.js" ],
     "matches": [ "http://*/*", "https://*/*"]
   }],
   "options_page": "options.html",
