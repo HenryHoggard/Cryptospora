@@ -1,0 +1,10 @@
+jquery
+
+contact_ids=,,
+conversation%5Bsubject%5D=awta
+conversation%5Btext%5D=tawt
+
+
+send the contact auto complete
+
+have it in a seperate js file

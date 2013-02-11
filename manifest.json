@@ -1,18 +1,15 @@
 {
-  "name": "Cryptospora",
-  "version": "0.1",
   "manifest_version": 2,
-  "description": "Encrypted Diaspora Messaging",
-  "permissions": [
-   "tabs", "proxy","background",  "http://*/*", "https://*/*"
-],
- "content_scripts": [ {
-    "js": [ "jquery.min.js" ],
-    "matches": [ "http://*/*", "https://*/*"]
-  }],
-  "options_page": "options.html",
-"browser_action": {
+
+  "name": "Create Message",
+  "description": "Create Message for Diaspora",
+  "version": "1.0",
+
+  "browser_action": {
     "default_icon": "icon.png",
-    "default_popup": "popup.html" 
- }
+    "default_popup": "template.html"
+  },
+  "permissions": [
+    "https://secure.flickr.com/"
+  ]
 }
