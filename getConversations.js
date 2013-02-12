@@ -10,13 +10,14 @@ $.getJSON("https://pod.cscf.me/conversations.json", function(json) {
 // loop for each message
     $.each(json, function(arrayID,message) {
         $.each(message, function() {
-            // add checkbox column
+            // for every message, extract author of message,
             $.ajax({
             async: false,
             type: 'GET',
             url: 'https://pod.cscf.me/conversations/'+message.conversation.id,
             success: function(data) {
-                var matches = data.match(/" class='author from' >(.*)<\/a>/);
+                var matches = data.match(/" class='author from' >(.*)<\/a>/); // regex to extract it,
+                // if there are no matches, it must be a self message 
                 if (matches != null) {
                     username = matches[1];
                 }
