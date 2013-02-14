@@ -35,15 +35,22 @@
 	  width:387px;
 	  }
 
+	  textarea#contentReply{
+	  width: 387px;
+	  }
+
 
 	  </style>
     <link href="bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
   </head>
   <body>
+
   <div class="container">
   <div class="span2">
+
+
+    <!--
   <h2>Menu</h2>
-  <!--Sidebar content-->
      <ul class="nav nav-list">
      <li class="active"><a href="#"><i class="icon-home icon-white"></i> Home</a>
      	<ul class=".dropdown-menu"><span><a href="#">Stream</span></a></li></ul>
@@ -57,22 +64,30 @@
 	 <li><br /></li>
      <li><a href="#"><i class="icon-arrow-left"></i> Return</a>
      </ul>
-	</div>
+     -->
+
 
       <form class="form-create">
         <h2 class="form-create-heading">View Message</h2>
-        <input type="text" class="input-block-level" placeholder="From">
-		<input type="text" class="input-block-level" placeholder="Subject">
-		<input type="text" class="input-block-level" placeholder="Date/Time">
-		<button class="btn btn-large btn-primary" type="submit">Decrypt Message</button> <p><br /></p>
-		<textarea name="Content" id="ContentArea" cols="60" rows="10" name="Content"></textarea>
-        <button class="btn btn-large btn-primary" type="submit">Delete Message</button>
-        <button class="btn btn-large btn-primary" type="submit">Reply</button>
+        <input type="text" id ="userField" class="input-block-level">
+		<input type="text" id="testSubject" class="input-block-level">
+		<input type="text" id="dateTime" class="input-block-level">
+		<textarea name="Content" id="ContentArea" cols="60" rows="5"></textarea>
 
+		<button class="btn btn-small btn-primary" type="submit">Decrypt Message</button>
+        <button class="btn btn-small btn-primary" type="submit">Delete Message</button>
+        <p><br /></p>
 
+		<textarea name="contentReply" id="contentReply" cols="60" rows="5"> </textarea>
+		<br />
+        <button class="btn btn-small btn-primary" type="submit">Reply</button>
+
+		</div>
 
       </form>
-    <script src="http://code.jquery.com/jquery-latest.js"></script>
+    <script src="jquery.js"></script>
     <script src="js/bootstrap.min.js"></script>
+    <script src="ViewMessage.js"></script>
+    <script src="bootstrap/js/jquery.js"></script>
   </body>
 </html>
