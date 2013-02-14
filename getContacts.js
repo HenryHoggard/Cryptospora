@@ -8,10 +8,6 @@
             $.each(Contact, function() {
                 // for every message, extract author of message,
 
-                $.ajax({
-                async: true,
-                type: 'GET',
-                url: 'https://pod.cscf.me/contacts/'+Contact.name,
 
 
                 table += "<td>" + Contact.name + "</td></tr>";
@@ -30,8 +26,7 @@
                        document.getElementById('table1').innerHTML = table;
 
                // }
-                }
-                });
+
 
                          });
         });
