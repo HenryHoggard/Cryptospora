@@ -1,8 +1,9 @@
 // Populate Groups from Diaspora Json
-// By Ryan McIntyre - Based on getConversations.js
+// By Ryan McIntyre
 
 	var Group = '';
-	var table ="<table class=\"table\" data-provides=\"rowlink\" > <thead> <tr><th>IWroteThis</th></tr> </thead> <tbody> ";
+	var theHTML;
+	theHTML = "<ul class=\"nav nav-tabs nav-stacked\"><li class=\"active\">";
 	var myRe = /class='aspect_selector' href='(.*)'/g;
 	var matches;
 
@@ -14,6 +15,7 @@
 
 			while ((matches = myRe.exec(data)) !== null)
 			{
+				console.log(matches);
 
 			  var X = myRe.lastIndex;
 			  console.log(data.indexOf("<",X));
@@ -21,16 +23,14 @@
 			  Group = data.substring(X+1,Temp);
 
 
-			  table += "<tr>";
-			  table += "<td>" + Group + "</td>";
-			  table += "</tr>";
+			  theHTML += "<li>";
+			  theHTML += "<a href=\"#\" id =\"" + matches[1] + "\">" + Group + "</a>";
+			  theHTML += "</li>";
+
 			  }
 
-
-
-		    		table += "</tbody></table>";
-
-					document.getElementById('table2').innerHTML = table;
+			  theHTML += "</ul>";
+			document.getElementById('table2').innerHTML = theHTML;
 		}
 
 	});
