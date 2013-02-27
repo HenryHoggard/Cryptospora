@@ -2,10 +2,13 @@
 // By Ryan McIntyre
 
 	var Group = '';
-	var theHTML;
+	var theHTML = '';
 	theHTML = "<ul class=\"nav nav-tabs nav-stacked\"><li class=\"active\">";
 	var myRe = /class='aspect_selector' href='(.*)'/g;
 	var matches;
+
+	var ArrayGroup = [];
+	var i = 0;
 
 	$.ajax({
 		async: true,
@@ -27,9 +30,23 @@
 			  theHTML += "<a href=\"#\" id =\"" + matches[1] + "\">" + Group + "</a>";
 			  theHTML += "</li>";
 
+			  ArrayGroup[i] = {};
+			  ArrayGroup[i]["GroupName"] = Group
+			  ArrayGroup[i]["GroupURL"] = matches[1];
+			  console.log(ArrayGroup[i]["GroupName"]);
+			  i += 1;
 			  }
 
+
+			  console.log(ArrayGroup[1]["GroupName"]);
+			  localStorage['StoredArrayGroups']=JSON.stringify(ArrayGroup); //Store Groups in LocalStorage
+
+			 // var Temp = JSON.parse(localStorage.ArrayGroups1); //How To Retrieve Groups
+			 // console.log(Temp[1]["GroupName"]);
+
 			  theHTML += "</ul>";
+
+
 			document.getElementById('table2').innerHTML = theHTML;
 		}
 
