@@ -8,7 +8,17 @@
 	var matches;
 
 	var ArrayGroup = [];
-	var i = 0;
+	var i = 1;
+
+	ArrayGroup[0] = {};
+	ArrayGroup[0]["GroupName"] = "All Contacts";
+	ArrayGroup[0]["GroupURL"] = "/contacts";
+	console.log(ArrayGroup[0]["GroupName"]);
+
+	theHTML += "<li>";
+	theHTML += "<a href=\"#\" id =\"" + ArrayGroup[0]["GroupURL"] + "\">" + ArrayGroup[0]["GroupName"] + "</a>";
+	theHTML += "</li>";
+
 
 	$.ajax({
 		async: true,
@@ -41,7 +51,7 @@
 			  console.log(ArrayGroup[1]["GroupName"]);
 			  localStorage['StoredArrayGroups']=JSON.stringify(ArrayGroup); //Store Groups in LocalStorage
 
-			 // var Temp = JSON.parse(localStorage.ArrayGroups1); //How To Retrieve Groups
+			 // var Temp = JSON.parse(localStorage.StoredArrayGroups); //How To Retrieve Groups
 			 // console.log(Temp[1]["GroupName"]);
 
 			  theHTML += "</ul>";
