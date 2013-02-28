@@ -21,7 +21,7 @@
 
 
 	$.ajax({
-		async: true,
+		async: false,
         type: 'GET',
         url: 'https://pod.cscf.me/contacts/',
         success: function(data) {
@@ -33,7 +33,9 @@
 			  var X = myRe.lastIndex;
 			  console.log(data.indexOf("<",X));
 			  var Temp = data.indexOf("<",X);
-			  Group = data.substring(X+1,Temp);
+			  Group = data.substring(X+2,Temp-1);
+
+			  console.log(Group);
 
 
 			  theHTML += "<li>";
@@ -46,7 +48,6 @@
 			  console.log(ArrayGroup[i]["GroupName"]);
 			  i += 1;
 			  }
-
 
 			  console.log(ArrayGroup[1]["GroupName"]);
 			  localStorage['StoredArrayGroups']=JSON.stringify(ArrayGroup); //Store Groups in LocalStorage

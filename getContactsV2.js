@@ -2,6 +2,9 @@
 // By Ryan McIntyre - Based on getConversations.js
 
 	var content = "";
+	$.ajaxSetup({
+		async: false
+	});
 
 
 
