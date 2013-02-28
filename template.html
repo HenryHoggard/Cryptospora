@@ -31,7 +31,7 @@
         margin-bottom: 10px;
       }
 	  
-	  textarea#conversation[text]{
+	  text1{
 	  width:387px;
 	  }
 	  
@@ -41,15 +41,11 @@
   </head>
   <body>
   <div class="container">
-      <form class="form-create" id="foo">
+      <form class="form-create" id="send">
         <h2 class="form-create-heading">Create Message</h2>
-		<input type="hidden" name="utf8" id="utf8" value=&#10003>
-		<input type="hidden" name="authenticity_token" id="authenticity_token" value="+VCY0WtdG1MuiIgREhQdEuQ+4I6/KUGOZqOFJ8hWVVI=">
-		<input type="hidden" name="contact_autocomplete" id="contact_autocomplete" value="">
-        <input type="text" class="input-block-level" placeholder="To" name="contact_ids" id="contact_ids">
-		<input type="text" class="input-block-level" placeholder="Subject" name="conversation[subject]" id="conversation[subject]">
-		<textarea name="conversation[text]" id="conversation[text]" cols="80" rows="10"></textarea></br>
-		<input type="hidden" name="commit" id="commit" value="Send">
+        <input type="text" class="input-block-level" placeholder="To" name="id1" id="id1">
+		<input type="text" class="input-block-level" placeholder="Subject" name="subject1" id="subject1">
+		<textarea name="text1" id="text1" cols="80" rows="10"></textarea></br>
 		<input type="radio" name="option" id="Normal">Normal Text
 		<input type="radio" name="option" id="Encryption">Use Encryption
 		<input type="radio" name="option" id="Steganography">Use Steganography</br></br>
