@@ -31,7 +31,7 @@ var username = [];
                        table += "<tr><td> <input type=\"checkbox\"></td>";
                 // adds link to message (for james to create the page for)
                 table += "<td><img src=\"https://wk3.org/assets/user/default.png\" height=\"24\" width=\"24\"></td>";
-                table += "<td><a href=\"viewDecrypt.html?messageid=" + message.conversation.id + "\">"+ username[i] + "</a></td>";
+                table += "<td><a href=\"ViewDecrypt.html?messageid=" + message.conversation.id + "\">"+ username[i] + "</a></td>";
                 table += "<td>" + message.conversation.subject + "</td>";
                 table += "<td>" + message.conversation.updated_at + "</td></tr>";
                 length = json.length;
