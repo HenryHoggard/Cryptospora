@@ -1,5 +1,6 @@
 {
   "manifest_version": 2,
+<<<<<<< HEAD
 
   "name": "Create Message",
   "description": "Create Message for Diaspora",
@@ -12,4 +13,23 @@
   "permissions": [
     "https://secure.flickr.com/"
   ]
+=======
+  "description": "Encrypted Diaspora Messaging",
+  "permissions": [
+   "tabs", "storage", "proxy","background",  "http://*/*", "https://*/*"
+],
+ "content_scripts": [ {
+    "js": [ "jquery.min.js" ],
+    "matches": [ "http://*/*", "https://*/*"]
+  }],
+  "options_page": "options.html",
+"browser_action": {
+    "default_icon": "icon.png",
+<<<<<<< HEAD
+    "default_popup": "Contacts.html" 
+=======
+    "default_popup": "inbox.html" 
+>>>>>>> testing
+ }
+>>>>>>> testing
 }
