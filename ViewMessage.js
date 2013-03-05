@@ -10,6 +10,7 @@ var replyMessage='';
 
 var token = getToken();
 
+var messageid= $.url().param('messageid');
 // variable to hold request
 var request;
  
@@ -20,7 +21,7 @@ $.getJSON("https://pod.cscf.me/conversations.json", function(json) {
         $.ajax({
             async: true,
             type: 'GET',
-            url: 'https://pod.cscf.me/conversations/' +message.conversation.id,
+            url: 'https://pod.cscf.me/conversations/' +messageid,
             success: function(data) {
                 var matches = data.match(/" class='author from' >(.*)<\/a>/); // regex to extract it,																			// if there are no matches, it must be a self message
 				var matches2 = data.match(/<div class='ltr'>\n<p>(.*)<\/p>/); //regex to extract message content,
@@ -71,7 +72,7 @@ $.getJSON("https://pod.cscf.me/conversations.json", function(json) {
 			
 			 // fire off the request to /form.php
 				var request1 = $.ajax({
-					url: 'https://pod.cscf.me/conversations/9/messages',
+					url: 'https://pod.cscf.me/conversations/'+messageid+'/messages',
 					type: "post",
 					data: data,
 					
