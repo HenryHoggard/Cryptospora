@@ -1,20 +1,10 @@
 $(function() {
+
 	$('#commit').click(function() { // press Login
 
 	  var username = $('#username').val();
 	  var password = $('#password').val();   	  
-	 //var username = document.getElementsByName('username');
-	 //var password = document.getElementsByName('password');
-	 //var username = JSON.stringify(username);
-	 //var password = JSON.stringify(password);
-	  //alert(username);
-	 // alert(password);
-	  //var username = "Sam";
-	  //var password = "worth22";
-	  //var authenticity_token = "taMUOrX1Q4Cx9wBXQ+6bRo9Ssw+scxxWD+HrScXArR0=";
-	  //var utf8 = "E29C93";
-	  
-	  
+	
 	  
 	  // get an authenticity token
 	  function getToken() 
@@ -34,6 +24,7 @@ $(function() {
 		});	
 		return result;
 		}
+		
 	    var authenticity_token = getToken();
 		//alert(authenticity_token);
 		//alert(username);
@@ -70,23 +61,23 @@ $(function() {
 					   data: dataToSend,     
 					   cache: false,
 					   
-					   /*success: function (phpOutput) {
-							//$('#testDummy').append('login works');
-							jQuery('#testDummy').append('<h2>Test Phase Complete.</h2><h2>Please Wait...</h2><img src="loader.gif" title="Working..."/>');
-						},*/
 						success: function(php_output) {
-							 $("#testDummy").html(php_output);
+							 //$("#testDummy").html(php_output);
 							// check if login was successfull
-							
-							var matches = php_output.match('<div class="message">Invalid email or password.</div>'); // regex to extract it,
-							// if there are no matches, it must be a self message 
-							tok = matches[1];
-							if (tok == "Invalid email or password.")
-							{
+							var loginMsg = php_output.match(/Invalid email or password./);
+							var outputErrorMsg="Invalid email or password.";
+							if(loginMsg == outputErrorMsg){
 								$('#loginError').fadeOut();
 								$('#loginError').empty();
-								$('#loginError').append('<div class="alert alert-error"> <button type="button" class="close" data-dismiss="alert">&times;</button>Invalid Username or Password</div>');
+								$('#loginError').append('<div class="alert alert-error"> <button type="button" class="close" data-dismiss="alert">&times;</button>Invalid username or password!</div>');
 								$('#loginError').fadeIn();
+							}
+
+							var SuccessfullloginMsg = php_output.match(/Signed in successfully./);
+							var goodLoginMsg="Signed in successfully.";
+							if(SuccessfullloginMsg == goodLoginMsg){
+								// go to inbox page
+								window.location.replace("inbox.html");
 							}
 							
 				   },
@@ -106,4 +97,5 @@ $(function() {
 		
 	  return false;
 	});
+	
 });
