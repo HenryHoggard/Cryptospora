@@ -46,7 +46,7 @@ body {
 				<li><a href="inbox.html">Inbox</a></li>
 			  <li><a href="template.html">Send Message</a></li>
 
-			  <li><a href="contacts.html">Contacts</a></li>
+			  <li><a href="Contacts.html">Contacts</a></li>
 			  <li><a href="settings.html">Settings</a></li>
 				</ul>
 
@@ -61,8 +61,8 @@ body {
 			  </div>
 			</div>
 			<h2>Settings</h2>
-			<div class="tabbable tabs-left"> <!-- Only required for left/right tabs -->
-				<ul class="nav nav-tabs" id="tabs" data-tabs="tabs">
+			<div class="tabbable">
+				<ul class="nav nav-tabs" id="mytabs" data-tabs="tabs">
 					<li class="active"><a href="#gentab" data-toggle="tab">General</a></li>
 					<li><a href="#advtab" data-toggle="tab">Advanced</a></li>
 				</ul>
@@ -70,32 +70,36 @@ body {
 					<div class="tab-pane active" id="gentab">
 						<p>You can change certain aspects of the plugin here.</p>
 						<br/>
-						<p class="offset1"> Font Style:
-						<select class="span4 offset2">
-							<option>Arial</option>
-							<option>Helvetica</option>
-							<option>Verdana</option>
-							<option>Times New Roman</option>
-							<option>Courier New</option>
+						<form action="" method="POST">
+						<p class="offset1">Font Style:
+						<select id="fontstyle" class="span4 offset2">
+							<option value="Arial">Arial</option>
+							<option value="Helvetica">Helvetica</option>
+							<option value="Verdana">Verdana</option>
+							<option value="Times New Roman">Times New Roman</option>
+							<option value="Courier New">Courier New</option>
 						</select>
 						<br />
 						<br />
-						<p class="offset1"> Font Size: 
-						<select class="span2 offset2">
-							<option>12</option>
-							<option>14</option>
-							<option>16</option>
-							<option>18</option>
+						<p class="offset1">Font Size: 
+						<select id="fontsize" class="span2 offset2">
+							<option value="12">12</option>
+							<option value="14">14</option>
+							<option value="16">16</option>
+							<option value="18">18</option>
 						</select>
-						<div class="form-actions offset1">
-							<button type="submit" class="btn btn-primary">Save changes</button>
-							<button type="button" class="btn">Cancel</button>
+						<br />
+						<br />
+						<br />
+						<div class="offset1">
+							<button type="button" class="btn btn-primary" id="saveset">Save changes</button>
 						</div>
+						</form>
 					</div>
 					<div class="tab-pane" id="advtab">
 						<p>These are more advanced settings. Please be careful when changing them.</p>
 						<p>Clear all locally stored data: 
-						<button class="btn btn-danger" id="clearcache">Clear Cache</button> </p>
+						<button class="btn btn-danger" id="clearcache" >Clear Cache</button> </p>
 						<br />
 						<p>Renew encryption key: 
 						<button class="btn btn-warning" id="renkey">Renew Key</button> </p> 
@@ -111,4 +115,5 @@ body {
  <script src="bootstrap/js/bootstrap.js"></script>
  <script src="bootstrap/js/bootstrap.min.js"></script>
  <script src="bootstrap/js/bootstrap-rowlink.js"></script>
+ <script src="settings.js"></script>
 </html>
