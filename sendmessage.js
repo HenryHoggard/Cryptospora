@@ -2,7 +2,7 @@
 var request;
 
 // bind to the submit event of our form
-$("#send").submit(function(event){
+$("#send").submit(function (event) {
     // abort any pending request
     if (request) {
         request.abort();
@@ -15,16 +15,19 @@ $("#send").submit(function(event){
 	
 	var token = getToken();
 	var id = $('#id1').val();
+	
 	var subject = $('#subject1').val();
 	var text = $('#text1').val();
 	var utf = "%E2%9C%93";
 	var cont = "";
 	var com = "Send";
 	
+	var recipientID = checkRecipient(id);
+	
 	var data = new FormData();
 	data.append('utf8',utf);
 	data.append('contact_autocomplete',cont);
-	data.append('contact_ids', id);
+	data.append('contact_ids', recipientID);
 	data.append('conversation[subject]', subject);
 	data.append('conversation[text]', text);
 	data.append('commit',com);
@@ -40,15 +43,6 @@ $("#send").submit(function(event){
 		processData:false,
 	    contentType: false,
 		async:false,
-		//"utf8: "+utf+
-				//"\n"+"contact_autocomplete: "+cont+
-				//"\n"+"contact_ids: "+id+
-				//"\n"+"conversation[subject]: " +subject+
-				//"\n"+"conversation[text]: " +text+
-				//"\n"+"commit: "+com+
-				//"\n"+"authenticity_token: "+token
-				//{utf8: utf, contact_autocomplete: cont, contact_ids: id, conversation[subject]: subject, conversation[text]: text, commit: com, authenticity_token: token}
-				
     });
 
     // callback handler that will be called regardless
@@ -62,7 +56,6 @@ $("#send").submit(function(event){
     // prevent default posting of form
     event.preventDefault();
 });
-
 
 
  function getToken() 
@@ -80,5 +73,39 @@ $("#send").submit(function(event){
 			result = tok;
 		}
 	});	
+	return result;
+}
+
+function checkRecipient(ID)
+{
+	$.ajax
+	({	
+        async: false,
+		type: 'GET',
+        url: 'https://pod.cscf.me/conversations/new',
+        success: function(data) 
+		{
+			var matches;
+			var name;
+			var regex = /{\\"value\\":\\"([^"]*)\\",\\"name\\":\\"([^"]*)\\"}/g			//need to sort out the REGEX so it goes through each name and ID seeing if it equals ID
+			while ((matches = regex.exec(data)) !== null)
+			{
+				console.log(matches);
+				var name = matches[2];
+				if(name == ID)
+				{
+					result = matches[1];
+				}
+				else
+				{
+					console.log("FAIL");
+					//this sends a message to me only
+					//need to add error trapping saying recipient cannot be found!
+				}
+			}
+		}
+		
+    });
+
 	return result;
 }
