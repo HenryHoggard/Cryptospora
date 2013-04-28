@@ -41,7 +41,6 @@
 	  width: 435px;
 	  }
 
-
 	  </style>
     <link href="bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
   </head>
@@ -61,11 +60,11 @@
         <li class="active">
           <a class="brand" href="#">Cryptospora</a>
         </li>
-        <li><a href="#">Inbox</a></li>
-        <li><a href="#">Send Message</a></li>
+      <li><a href="inbox.html">Inbox</a></li>
+      <li><a href="template.html">Send Message</a></li>
 
-        <li><a href="#">Contacts</a></li>
-        <li><a href="#">Settings</a></li>
+      <li><a href="contacts.html">Contacts</a></li>
+      <li><a href="settings.html">Settings</a></li>
       </ul>
 
 
@@ -83,14 +82,14 @@
   <div class="span2">
 
 
-      <form class="form-create">
+      <form class="form-create" id="other">
         <h3 class="form-create-heading">View Message</h3>
         <input type="text" id ="userField" class="input-block-level">
 		<input type="text" id="testSubject" class="input-block-level">
 		<input type="text" id="dateTime" class="input-block-level">
 		<textarea name="Content" id="ContentArea" cols="60" rows="5"></textarea>
 		<button class="btn" type="submit">Decrypt Message</button>
-        <button class="btn-warning" type="submit">Delete Message</button>
+        <button class="btn-warning" id="delete" value = "delete">Delete Message</button>
        </form>
 
 		<form class="form-create" id = "send">
@@ -103,9 +102,10 @@
 		</div>
 
       </form>
-    <script src="jquery.js"></script>
-    <script src="bootstrap/js/bootstrap.min.js"></script>
-    <script src="ViewMessage.js"></script>
     <script src="bootstrap/js/jquery.js"></script>
+    <script src="bootstrap/js/bootstrap.min.js"></script>
+    <script src="bootstrap/js/purl.js"></script>
+
+    <script src="ViewMessage.js"></script>
   </body>
 </html>
