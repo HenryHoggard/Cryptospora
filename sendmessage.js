@@ -22,6 +22,7 @@ $("#send").submit(function (event) {
 	
 	var subject = $('#subject1').val();
 	var text = $('#text1').val();
+        text = encryptMessage("password", text);
 	var utf = "%E2%9C%93";
 	var cont = "";
 	var com = "Send";
@@ -86,6 +87,17 @@ $("#send").submit(function (event) {
 	});	
 	return tok;
 }
+
+function encryptMessage(password, text) {
+    var encrypted = sjcl.encrypt(password,text);
+    console.log(encrypted);
+    encrypted =jQuery.parseJSON(encrypted);
+
+    return encrypted.ct;
+    
+
+}
+
 
 function checkRecipient(ID)
 {
