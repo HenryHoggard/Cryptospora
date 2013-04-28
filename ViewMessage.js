@@ -151,8 +151,5 @@ $.ajax({
 		return result;
 	}		
 
-
-
-		
 var url = $.url(true).fparam('messageid');
 console.log(url);	
