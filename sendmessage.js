@@ -49,10 +49,18 @@ $("#send").submit(function (event)
 		{
 			var encryptPassword = $('#encryptpass').val();
 			if (encryptPassword)
-			{
-			
-			
-				alert("ENCRYPT IT");
+			{	
+				alert("Encrypted Message Sent");
+				text =  encryptMessage(encryptPassword, text);
+				var data = new FormData();
+				data.append('utf8',utf);
+				data.append('contact_autocomplete',cont);
+				data.append('contact_ids', recipientID);
+				data.append('conversation[subject]', subject);
+				data.append('conversation[text]', text);
+				data.append('commit',com);
+				data.append('authenticity_token', token);
+				sendMessage(data);
 			}
 			else
 			{
@@ -62,6 +70,7 @@ $("#send").submit(function (event)
 		}
 		else
 		{
+			alert("Message Sent");
 			var data = new FormData();
 			data.append('utf8',utf);
 			data.append('contact_autocomplete',cont);
@@ -70,31 +79,8 @@ $("#send").submit(function (event)
 			data.append('conversation[text]', text);
 			data.append('commit',com);
 			data.append('authenticity_token', token);
+			sendMessage(data);
 
-			// post the data
-			var request = $.ajax
-			({
-				url: "https://pod.cscf.me/conversations",
-				type: "post",
-				data:  data,
-
-				processData:false,
-				contentType: false,
-				async:false,
-			});
-
-			// callback handler that will be called regardless
-			// if the request failed or succeeded
-			request.always(function () 
-			{
-				// reenable the inputs
-				$inputs.prop("disabled", false);
-			});
-
-			// prevent default posting of form
-			event.preventDefault();
-			alert("Message Sent");
-			$('#send')[0].reset();
 		}
 	}	
 	else
@@ -104,8 +90,8 @@ $("#send").submit(function (event)
 });
 
 
- function getToken() 
- {       
+function getToken() 
+{       
 	$.ajax
 	({
         async: false,
@@ -121,15 +107,41 @@ $("#send").submit(function (event)
 	return tok;
 }
 
-function encryptMessage(password, text) {
-    var encrypted = sjcl.encrypt(password,text);
-    console.log(encrypted);
-  //  encrypted =jQuery.parseJSON(encrypted);
-    var decrypted = sjcl.decrypt(password, encrypted);
-    console.log("decrypt" + decrypted);
-    return encrypted;
-    
+function encryptMessage(password, text) 
+{
+	var encrypted = sjcl.encrypt(password,text);
+	console.log(encrypted);
+	//encrypted =jQuery.parseJSON(encrypted);
+	var decrypted = sjcl.decrypt(password, encrypted);
+	console.log("decrypt" + decrypted);
+	return encrypted;
+}
 
+function sendMessage(data)
+{
+	// post the data
+	var request = $.ajax
+	({
+		url: "https://pod.cscf.me/conversations",
+		type: "post",
+		data:  data,
+
+		processData:false,
+		contentType: false,
+		async:false,
+	});
+
+	// callback handler that will be called regardless
+	// if the request failed or succeeded
+	request.always(function () 
+	{
+		// reenable the inputs
+		$inputs.prop("disabled", false);
+	});
+
+	// prevent default posting of form
+	event.preventDefault();
+	$('#send')[0].reset();
 }
 
 
