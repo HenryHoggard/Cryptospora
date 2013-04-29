@@ -33,14 +33,18 @@ var username = [];
                 table += "<td><img src=\"https://wk3.org/assets/user/default.png\" height=\"24\" width=\"24\"></td>";
                 table += "<td><a href=\"ViewDecrypt.html?messageid=" + message.conversation.id + "\">"+ username[i] + "</a></td>";
                 table += "<td>" + message.conversation.subject + "</td>";
-                table += "<td>" + message.conversation.updated_at + "</td></tr>";
+                var date = prettyDate(message.conversation.updated_at);
+                table += "<td>" +date + "</td></tr>";
                 length = json.length;
                 iter = (100/length);
-                iter = Math.ceil(iter * 10) / 10;
+                //iter = Math.ceil(iter * 10) / 10;
                 progress = (progress+iter);
+                var num = Math.round(progress).toFixed();
+                console.log(progress);
+                //$("#status").html("Loading Progess " + num + "%");
+                $("#progress").css('width',num+'%');
+                $("#progress").text(num + "%");
 
-                $("#status").html("Loading Progess " + progress + "%");
-                $("#progress").css('width',progress+'%');
                 i++;
                 if (i == 9) {
                                           
@@ -53,7 +57,7 @@ var username = [];
                        $('#progressouter').remove();
                        $('#status').remove();
                       // pageLoaded(length);
-                       $(document).ready(function() {
+                      $(document).ready(function() {
                            $('#inbox').dataTable( {
                                "sDom": "<'row'<'span6'l><'span6'f>r>t<'row'<'span6'i><'span6'p>>"
                             } );
