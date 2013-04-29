@@ -38,6 +38,45 @@ document.getElementById('table1').innerHTML = store;
 
 
 
+$("#Add").click( function()
+          {
+            //alert('This Works');
+            console.log("The Add Button has been clicked");
+
+            var $form = $(this);
+            var anMethod = "POST";
+            var aspect = getAspectID();
+            var person = getUserID();
+            var utf = "%E2%9C%93";
+			var token = getToken();
+			var Ref = 'https://pod.cscf.me/contacts';
+
+
+            var dataAddToAspect = new FormData();
+            dataAddToAspect.append('utf8', utf);
+            dataAddToAspect.append('Referer', Ref);
+            dataAddToAspect.append('aspect_id', aspect);
+            dataAddToAspect.append('person_id', person);
+            dataAddToAspect.append('_method', anMethod);
+
+            var request = $.ajax({
+				url: 'https://pod.cscf.me/aspect_memberships.json',
+				type: "post",
+				beforeSend: function (xhr) {
+				     xhr.setRequestHeader('X-CSRF-Token', token);
+				},
+
+				data: dataAddToAspect,
+
+				processData: false,
+				contentType: false,
+				async: false,
+
+			});
+	window.location.reload();
+});
+
+
 $("#Delete").click( function()
           {
             //alert('This Works');
@@ -75,6 +114,89 @@ $("#Delete").click( function()
 			});
 	window.location.reload();
 });
+
+
+
+
+$("#Create").click( function()
+          {
+            //alert('This Works');
+            console.log("The Create Button has been clicked");
+
+            var $form = $(this);
+            var commit = "Create";
+            var aspect = document.getElementById('AspectName').value;
+            var utf = "%E2%9C%93";
+			var token = getToken();
+			var Ref = 'https://pod.cscf.me/contacts';
+
+
+            var dataCreateAspect = new FormData();
+            dataCreateAspect.append('utf8', utf);
+            dataCreateAspect.append('authenticity_token', token);
+            dataCreateAspect.append('aspect[name]', aspect);
+            dataCreateAspect.append('aspect[contacts_visible]', 0);
+            dataCreateAspect.append('commit', commit);
+
+            var request = $.ajax({
+				url: 'https://pod.cscf.me/aspects',
+				type: "post",
+
+				data: dataCreateAspect,
+
+				processData: false,
+				contentType: false,
+				async: false,
+
+			});
+	window.location.reload();
+});
+
+
+
+$("#Destory").click( function()
+          {
+            //alert('This Works');
+            console.log("The Destory Button has been clicked");
+
+            var $form = $(this);
+            var AMethod = "delete";
+            var aspect = getAspectID();
+            var utf = "%E2%9C%93";
+			var token = getToken();
+			var Ref = 'https://pod.cscf.me/aspects/'+aspect;
+
+
+            var dataDestoryAspect = new FormData();
+
+            dataDestoryAspect.append('utf8', utf);
+            dataDestoryAspect.append('_method', AMethod);
+            dataDestoryAspect.append('authenticity_token', token);
+
+
+            var request = $.ajax({
+				url: Ref,
+				type: "post",
+
+				data: dataDestoryAspect,
+
+				processData: false,
+				contentType: false,
+				async: false,
+
+			});
+	window.location.reload();
+});
+
+
+
+
+
+
+
+
+
+
 
 function getUserID()
 {
