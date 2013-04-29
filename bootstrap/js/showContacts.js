@@ -73,6 +73,7 @@ $("#Delete").click( function()
 				async: false,
 
 			});
+	window.location.reload();
 });
 
 function getUserID()
