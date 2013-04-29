@@ -3,7 +3,7 @@
 
 
 // defines the table variable and adds the top of the table headers
-var table ="<table class=\"table\" data-provides=\"rowlink\"  >  <thead>  <tr><th></th> <th></th> <th>From</th>  <th>Subject</th>   <th>Date</th>  </tr>  </thead>  <tbody> ";
+var table ="<table cellpadding=\"0\" cellspacing=\"0\" border=\"0\" class=\"table table-striped table-bordered\" id=\"inbox\" data-provides=\"rowlink\"  >  <thead>  <tr><th></th> <th></th> <th>From</th>  <th>Subject</th>   <th>Date</th>  </tr>  </thead>  <tbody> ";
 // grabs the json of the conversations
 var username = [];
     $.getJSON("https://pod.cscf.me/conversations.json", function(json) {
@@ -52,8 +52,15 @@ var username = [];
                        document.getElementById('table1').innerHTML = table;
                        $('#progressouter').remove();
                        $('#status').remove();
-                       pageLoaded(length);
-
+                      // pageLoaded(length);
+                       $(document).ready(function() {
+                           $('#inbox').dataTable( {
+                               "sDom": "<'row'<'span6'l><'span6'f>r>t<'row'<'span6'i><'span6'p>>"
+                            } );
+                      } );
+                       $.extend( $.fn.dataTableExt.oStdClasses, {
+                           "sWrapper": "dataTables_wrapper form-inline"
+                       } );
                 }
                 }
                 }); 
