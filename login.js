@@ -26,7 +26,10 @@ $(function() {
 		}
 		
 	    var authenticity_token = getToken();
+<<<<<<< HEAD
 		var utf = "%E2%9C%93"; 
+=======
+>>>>>>> 4305789d1aa241b81da6c1254be23ab8a1b90218
 		//alert(authenticity_token);
 		//alert(username);
 		//alert(password);
@@ -49,9 +52,15 @@ $(function() {
 	   }
 	   // if all data is present...
 	   else{
+<<<<<<< HEAD
 
 			 //post the login details
 			var dataToSend = 'utf8' +utf +'authenticity_token=' + authenticity_token +'&user[username]=' + username +'&user[password]='+ password + '&commit=Sign+in';
+=======
+		   
+			 //post the login details
+			var dataToSend = 'authenticity_token=' + authenticity_token +'&user[username]=' + username +'&user[password]='+ password + '&commit=Sign+in';
+>>>>>>> 4305789d1aa241b81da6c1254be23ab8a1b90218
 			 var dataToSend2 = JSON.stringify(dataToSend);
 			//alert(dataToSend2);
 					//var dataToSend = 'utf8=E29C93&authenticity_token=Wpy61blxjdZx3K8tB9aArqUZOaBwfl5eCBNNM235j34=&user[username]=sam&user[password]=worth22&commit=Sign+in';
@@ -63,9 +72,12 @@ $(function() {
 					   cache: false,
 					   
 						success: function(php_output) {
+<<<<<<< HEAD
 							
 							window.location.replace("inbox.html");
 
+=======
+>>>>>>> 4305789d1aa241b81da6c1254be23ab8a1b90218
 							 //$("#testDummy").html(php_output);
 							// check if login was successfull
 							var loginMsg = php_output.match(/Invalid email or password./);
@@ -83,7 +95,11 @@ $(function() {
 								// go to inbox page
 								window.location.replace("inbox.html");
 							}
+<<<<<<< HEAD
 
+=======
+							
+>>>>>>> 4305789d1aa241b81da6c1254be23ab8a1b90218
 				   },
 						
 					error: function(){
