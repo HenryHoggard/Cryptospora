@@ -40,7 +40,7 @@ $.getJSON("https://pod.cscf.me/conversations.json", function(json) {
  
  		$("#delete").click( function()
            {
-             alert('You have deleted this conversation');
+            // alert('You have deleted this conversation');
 			 if (request1) {
 				request1.abort();
 			 }
