@@ -121,6 +121,18 @@ $("#send").submit(function (event)
 	return tok;
 }
 
+function encryptMessage(password, text) {
+    var encrypted = sjcl.encrypt(password,text);
+    console.log(encrypted);
+  //  encrypted =jQuery.parseJSON(encrypted);
+    var decrypted = sjcl.decrypt(password, encrypted);
+    console.log("decrypt" + decrypted);
+    return encrypted;
+    
+
+}
+
+
 function checkRecipient(ID)
 {
 	$.ajax
