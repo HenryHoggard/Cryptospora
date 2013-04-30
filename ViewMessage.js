@@ -118,6 +118,8 @@ $.getJSON("https://pod.cscf.me/conversations.json", function(json) {
 
 				});
 
+				alert('You have replied to this message');
+
 				// callback handler that will be called regardless
 				// if the request failed or succeeded
 				request.always(function () {
