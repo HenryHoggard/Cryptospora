@@ -17,7 +17,6 @@
         max-width: 400px;
         padding: 19px 29px 29px;
         margin: 0 auto 20px;
-        background-color: #fff;
         border: 1px solid #e5e5e5;
         -webkit-border-radius: 5px;
            -moz-border-radius: 5px;
@@ -27,12 +26,12 @@
                 box-shadow: 0 1px 2px rgba(0,0,0,.05);
       }
 	  
-	  .form-create .form-create-heading,.form-create {
+	  .form-create .form-create-heading {
         margin-bottom: 10px;
       }
 	  
-	  text1{
-	  width:387px;
+	  textarea{
+		width: 387px;
 	  }
 	  
 	  
@@ -64,7 +63,7 @@
       
    
       <!-- Everything you want hidden at 940px or less, place within here -->  
-      <div class="nav-collapse"> Logged in as henry 
+
         <!-- .nav, .navbar-search, .navbar-form, etc -->  
       </div>  
    
@@ -75,15 +74,21 @@
   <div class="container">
       <form class="form-create" id="send">
         <h2 class="form-create-heading">Create Message</h2>
-        <input type="text" class="input-block-level" placeholder="To" name="id1" id="id1">
-		<input type="text" class="input-block-level" placeholder="Subject" name="subject1" id="subject1">
-		<textarea name="text1" id="text1" cols="80" rows="10"></textarea></br>
-		<input type="radio" name="option" id="Normal">Normal Text
-		<input type="radio" name="option" id="Encryption">Use Encryption
-		<input type="radio" name="option" id="Steganography">Use Steganography</br></br>
+        <input type="text" class="input-block-level" placeholder="To" name="id" id="id">
+		<input type="text" class="input-block-level" placeholder="Subject" name="subject" id="subject">
+		<textarea name="textarea" id="textarea" columns="60" rows="5"></textarea></br>
+		<input type="radio" name="option" id="Normal" checked="checked" value="normal"/>Normal Text
+		<input type="radio" name="option" id="Encryption" value="encrypt">Use Encryption
+		<input type="radio" name="option" id="Steganography" value="steg">Use Steganography</br></br>
+		<input type="file" id="image" name="image" style="display:none;"></br>
+		<input type="text" class="input-block-level" placeholder="Password" name="encryptpass" id="encryptpass" style="display:none;"></br>
+		<input type="text" class="input-block-level" placeholder="Password" name="stegpass" id="stegpass" style="display:none;"></br>
+		
         <button class="btn" value="Send" type="submit">Send Message</button>
       </form>	
     <script src="bootstrap/js/jquery.js"></script>
+    <script src="bootstrap/js/sjcl.js"></script>
+
     <script src="bootstrap/js/bootstrap.min.js"></script>
 	<script src="sendmessage.js"></script>
 	

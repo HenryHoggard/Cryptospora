@@ -3,7 +3,7 @@
 
 
 // defines the table variable and adds the top of the table headers
-var table ="<table class=\"table\" data-provides=\"rowlink\"  >  <thead>  <tr><th></th> <th></th> <th>From</th>  <th>Subject</th>   <th>Date</th>  </tr>  </thead>  <tbody> ";
+var table ="<table cellpadding=\"0\" cellspacing=\"0\" border=\"0\" class=\"table table-striped table-bordered\" id=\"inbox\" data-provides=\"rowlink\"  >  <thead>  <tr><th></th> <th></th> <th>From</th>  <th>Subject</th>   <th>Date</th>  </tr>  </thead>  <tbody> ";
 // grabs the json of the conversations
 var username = [];
     $.getJSON("https://pod.cscf.me/conversations.json", function(json) {
@@ -33,14 +33,18 @@ var username = [];
                 table += "<td><img src=\"https://wk3.org/assets/user/default.png\" height=\"24\" width=\"24\"></td>";
                 table += "<td><a href=\"ViewDecrypt.html?messageid=" + message.conversation.id + "\">"+ username[i] + "</a></td>";
                 table += "<td>" + message.conversation.subject + "</td>";
-                table += "<td>" + message.conversation.updated_at + "</td></tr>";
+                var date = prettyDate(message.conversation.updated_at);
+                table += "<td>" +date + "</td></tr>";
                 length = json.length;
                 iter = (100/length);
-                iter = Math.ceil(iter * 10) / 10;
+                //iter = Math.ceil(iter * 10) / 10;
                 progress = (progress+iter);
+                var num = Math.round(progress).toFixed();
+                console.log(progress);
+                //$("#status").html("Loading Progess " + num + "%");
+                $("#progress").css('width',num+'%');
+                $("#progress").text(num + "%");
 
-                $("#status").html("Loading Progess " + progress + "%");
-                $("#progress").css('width',progress+'%');
                 i++;
                 if (i == 9) {
                                           
@@ -52,8 +56,15 @@ var username = [];
                        document.getElementById('table1').innerHTML = table;
                        $('#progressouter').remove();
                        $('#status').remove();
-                       pageLoaded(length);
-
+                      // pageLoaded(length);
+                      $(document).ready(function() {
+                           $('#inbox').dataTable( {
+                               "sDom": "<'row'<'span6'l><'span6'f>r>t<'row'<'span6'i><'span6'p>>"
+                            } );
+                      } );
+                       $.extend( $.fn.dataTableExt.oStdClasses, {
+                           "sWrapper": "dataTables_wrapper form-inline"
+                       } );
                 }
                 }
                 }); 

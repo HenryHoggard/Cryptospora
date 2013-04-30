@@ -5,11 +5,13 @@
     <title>View Message</title>
     <!-- Bootstrap -->
     <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <link href="bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
+
   <style type="text/css">
       body {
         width: 800px;
-	height:500px;
-	padding-top: 40px;
+		height:500px;
+		padding-top: 0px;
         padding-bottom: 40px;
         background-color: #f5f5f5;
       }
@@ -33,8 +35,16 @@
         margin-bottom: 10px;
       }
 
-	  textarea#ContentArea{
-	  width:435px;
+	  #ContentArea{
+	  word-wrap: break-word;
+	  background-color: #ffdee2;
+	  -webkit-border-radius: 5px;
+	     -moz-border-radius: 5px;
+            border-radius: 5px;
+        -webkit-box-shadow: 0 1px 2px rgba(0,0,0,.05);
+           -moz-box-shadow: 0 1px 2px rgba(0,0,0,.05);
+                box-shadow: 0 1px 2px rgba(0,0,0,.05);
+
 	  }
 
 	  textarea#contentReply{
@@ -42,8 +52,8 @@
 	  }
 
 
+
 	  </style>
-    <link href="bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
   </head>
   <body>
    <div class="navbar">
@@ -83,15 +93,18 @@
   <div class="span2">
 
 
-      <form class="form-create">
+      <form class="form-create" id="other" action="javascript:void(0);">
         <h3 class="form-create-heading">View Message</h3>
         <input type="text" id ="userField" class="input-block-level">
 		<input type="text" id="testSubject" class="input-block-level">
 		<input type="text" id="dateTime" class="input-block-level">
-		<textarea name="Content" id="ContentArea" cols="60" rows="5"></textarea>
-		<button class="btn" type="submit">Decrypt Message</button>
-        <button class="btn-warning" type="submit">Delete Message</button>
-       </form>
+		<div class="display" id="ContentArea"></div><br>
+		<input type="text" placeholder="Password" id="pass"><br>
+		<button class="btn" id = "decrypt">Decrypt Message</button>
+		<button class="btn-warning" id="delete" value = "delete">Delete Message</button>
+
+	</form>
+
 
 		<form class="form-create" id = "send">
 		<textarea name="message[text]" id="contentReply" cols="60" rows="3"> </textarea>
@@ -106,7 +119,9 @@
     <script src="bootstrap/js/jquery.js"></script>
     <script src="bootstrap/js/bootstrap.min.js"></script>
     <script src="bootstrap/js/purl.js"></script>
-
+    <script src="bootstrap/js/pretty.js"></script>
     <script src="ViewMessage.js"></script>
+    <script src="bootstrap/js/sjcl.js"></script>
+	<script src="decryptMessage.js"></script>
   </body>
 </html>
