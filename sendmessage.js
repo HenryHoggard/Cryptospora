@@ -7,6 +7,45 @@ var regex = /{\\"value\\":\\"([^"]*)\\",\\"name\\":\\"([^"]*)\\"}/g			//need to 
 var steganography = false;
 var encryption = false;
 
+
+
+function sendRequest(utf, cont, recipientID, subject, text, com, token) {
+    var data = new FormData();
+    data.append('utf8',utf);
+    data.append('contact_autocomplete',cont);
+    data.append('contact_ids', recipientID);
+    data.append('conversation[subject]', subject);
+    data.append('conversation[text]', text);
+    data.append('commit',com);
+    data.append('authenticity_token', token);
+			// post the data
+    var request = $.ajax({
+				url: "https://pod.cscf.me/conversations",
+				type: "post",
+				data:  data,
+
+				processData:false,
+				contentType: false,
+				async:false,
+			});
+
+			// callback handler that will be called regardless
+			// if the request failed or succeeded
+//			request.always(function () 
+//			{
+				// reenable the inputs
+//				$inputs.prop("disabled", false);
+//			});
+
+			// prevent default posting of form
+//			event.preventDefault();
+			$('#send')[0].reset();
+}
+
+
+
+
+
 // bind to the submit event of our form
 $("#send").submit(function (event) 
 {
@@ -35,13 +74,11 @@ $("#send").submit(function (event)
 			var stegPassword = $('#stegpass').val();
 			if (stegPassword)
 			{
+			  
 			
-			
-				alert("STEGO IT");
 			}
 			else
 			{
-				alert("Please enter a password for Steganography");
 				$('#send')[0].reset();
 			}
 		}
@@ -52,54 +89,25 @@ $("#send").submit(function (event)
 			{
 			
 			
-				alert("ENCRYPT IT");
+				text = encryptMessage(encryptPassword, text);
+		        sendRequest(utr,cont, recipientID, subject, text, com, token);
+				
 			}
 			else
 			{
-				alert("Please enter a password for Encyption");
+				console.log("Please enter a password for Encyption");
 				$('#send')[0].reset();
 			}
 		}
 		else
 		{
-			var data = new FormData();
-			data.append('utf8',utf);
-			data.append('contact_autocomplete',cont);
-			data.append('contact_ids', recipientID);
-			data.append('conversation[subject]', subject);
-			data.append('conversation[text]', text);
-			data.append('commit',com);
-			data.append('authenticity_token', token);
-
-			// post the data
-			var request = $.ajax
-			({
-				url: "https://pod.cscf.me/conversations",
-				type: "post",
-				data:  data,
-
-				processData:false,
-				contentType: false,
-				async:false,
-			});
-
-			// callback handler that will be called regardless
-			// if the request failed or succeeded
-			request.always(function () 
-			{
-				// reenable the inputs
-				$inputs.prop("disabled", false);
-			});
-
-			// prevent default posting of form
-			event.preventDefault();
-			alert("Message Sent");
-			$('#send')[0].reset();
-		}
+	        console.log("FUCK YOU CUNT");
+			sendRequest(utr,cont, recipientID, subject, text, com, token);
+	    }
 	}	
 	else
 	{
-		alert("Could not find Username or Pod address please try again");
+		console.log("Could not find Username or Pod address please try again");
 	}
 });
 
@@ -156,6 +164,9 @@ function checkRecipient(ID)
 
 	return result;
 }
+
+
+
 
 $("input[type='radio']").change(function()
 {
