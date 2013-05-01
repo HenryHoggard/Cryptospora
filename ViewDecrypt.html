@@ -100,7 +100,10 @@
 		<input type="text" id="dateTime" class="input-block-level">
 		<div class="display" id="ContentArea"></div><br>
 		<input type="text" placeholder="Password" id="pass"><br>
+		<input type='file' id='file' /><br>
+		<img id='preview' class='preview hide' />
 		<button class="btn" id = "decrypt">Decrypt Message</button>
+		<button class="btn" id = "desteg">Desteg Message</button>
 		<button class="btn-warning" id="delete" value = "delete">Delete Message</button>
 
 	</form>
@@ -123,5 +126,7 @@
     <script src="ViewMessage.js"></script>
     <script src="bootstrap/js/sjcl.js"></script>
 	<script src="decryptMessage.js"></script>
+	
+	<canvas id='canvas' class='hide'></canvas>
   </body>
 </html>
