@@ -1,25 +1,4 @@
 // variable to hold request
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//lol
 var request;
 var tok;
 var matches;
@@ -152,16 +131,6 @@ function sendMessage(data)
 		async:false,
 	});
 
-	// callback handler that will be called regardless
-	// if the request failed or succeeded
-	request.always(function () 
-	{
-		// reenable the inputs
-		$inputs.prop("disabled", false);
-	});
-
-	// prevent default posting of form
-	event.preventDefault();
 	$('#send')[0].reset();
 }
 
