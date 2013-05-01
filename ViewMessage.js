@@ -35,12 +35,12 @@ $.getJSON("https://pod.cscf.me/conversations.json", function(json) {
            
         subject = message.conversation.subject;
 		username = username;
-		dateTime = message.conversation.updated_at;
+		dateTime = prettyDate(message.conversation.updated_at);
 		content = matches2[1]; 
  
  		$("#delete").click( function()
            {
-            // alert('You have deleted this conversation');
+             alert('You have deleted this conversation');
 			 if (request1) {
 				request1.abort();
 			 }
@@ -69,14 +69,16 @@ $.getJSON("https://pod.cscf.me/conversations.json", function(json) {
 				
 
 			});
-			window.open('inbox.html', '_self', false);
+			window.open.replace('inbox.html', '_self', false);
 			}
         );
  
         document.getElementById('testSubject').value = subject;
 		document.getElementById('userField').value = username;
 		document.getElementById('dateTime').value = dateTime;
-		document.getElementById('ContentArea').value = content;
+		
+		var decoded = $('<div/>').html(content).text();
+		$("#ContentArea").text(decoded);
 		
 		//Grab content of new reply message 
 		document.getElementById('contentReply').value = replyMessage;
@@ -116,6 +118,8 @@ $.getJSON("https://pod.cscf.me/conversations.json", function(json) {
 
 				});
 
+				alert('You have replied to this message');
+
 				// callback handler that will be called regardless
 				// if the request failed or succeeded
 				request.always(function () {
@@ -151,5 +155,8 @@ $.ajax({
 		return result;
 	}		
 
+
+
+		
 var url = $.url(true).fparam('messageid');
 console.log(url);	
