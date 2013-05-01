@@ -46,7 +46,9 @@ $.getJSON("https://pod.cscf.me/conversations/" + messageid+".json", function(jso
 		document.getElementById('dateTime').value = dateTime;
 		
 		var decoded = $('<div/>').html(content).text();
-		$("#ContentArea").text(decoded);
+
+                console.log(decoded);
+		$("#ContentArea").html(content);
 		
 		//Grab content of new reply message 
 		document.getElementById('contentReply').value = replyMessage;
