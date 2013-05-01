@@ -46,10 +46,7 @@ var username = [];
                 $("#progress").text(num + "%");
 
                 i++;
-                if (i == 9) {
-                                          
-                    
-                }
+    
                 if (progress > 99.999) {
                        table += "</tbody></table>";
       // add table to div 'table1'
@@ -57,11 +54,18 @@ var username = [];
                        $('#progressouter').remove();
                        $('#status').remove();
                       // pageLoaded(length);
-                      $(document).ready(function() {
-                           $('#inbox').dataTable( {
-                               "sDom": "<'row'<'span6'l><'span6'f>r>t<'row'<'span6'i><'span6'p>>"
-                            } );
-                      } );
+                /*Table initialisation */
+       $(document).ready(function() {
+	var oTable = $('#inbox').dataTable( {
+		"sDom": "<'row'<'span6'l><'span6'f>r>t<'row'<'span6'i><'span6'p>>",
+		"sPaginationType": "bootstrap",
+		"oLanguage": {
+			"sLengthMenu": "_MENU_ records per page"
+		}
+	} );
+       //oTable.fnSort( [3,'asc'] );
+} );
+
                        $.extend( $.fn.dataTableExt.oStdClasses, {
                            "sWrapper": "dataTables_wrapper form-inline"
                        } );
@@ -111,9 +115,6 @@ $.get('https://pod.cscf.me/conversations/', function(data) {
     });
 
 }*/
-
-
-
 
 function getToken() {
     $.ajax
