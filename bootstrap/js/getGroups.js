@@ -1,9 +1,11 @@
 // Builds a Group Database - stores in Local Storage and Displays to screen
 // By Ryan McIntyre
 
+	var progress = 0;
+
 	var Group = '';
 	var theHTML = '';
-	theHTML = "<ul class=\"nav nav-tabs nav-stacked\"><li class=\"active\">";
+	theHTML = "<ul class=\"nav nav-tabs nav-stacked\"><li class=\"active\"><li>&nbspAspects</li>";
 	var myRe = /class='aspect_selector' href='(.*)'/g;
 	var matches;
 
