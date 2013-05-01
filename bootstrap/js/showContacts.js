@@ -13,15 +13,15 @@ for (var i = 0; i < ArrayOfContacts.length; i++) {
 	store +="<div class=\"accordion-group\"><div class=\"accordion-heading\"><a class=\"accordion-toggle\" data-toggle=\"collapse\" data-parent=\"#accordion2\" href=\"#" + i + "\">";
 		store += ArrayOfContacts[i]["ContactName"] + "</a></div>";
 		store += "<div id=" + "\"" + i + "\"" + " class=\"accordion-body collapse\"><div class=\"accordion-inner\">";
-		store += "<form><fieldset><a class=\"btn pull-right\" id=\"" + ArrayOfContacts[i]["ContactAddress"] + "\">Message</a><br />Groups:";
+		store += "<form><fieldset><a class=\"btn pull-right\" id=\"" + ArrayOfContacts[i]["ContactAddress"] + "\" disabled>Message</a><br />Groups:";
 			for(var index in ArrayOfContacts[i]) {
 				if(index != "ContactName" && index != "ContactAddress" && index !="ContactID"){
-			  	store += "<div class=\"alert alert-success\"><button type=\"button\" class=\"close\" data-dismiss=\"alert\">&times;</button>";
+			  	store += "<div class=\"alert alert-success\"><button type=\"button\" class=\"close\" data-dismiss=\"alert\" disabled>&times;</button>";
 			  	store += index;
 			  	store += "</div>"
 		  		}
 			}
-		store += "Add to Group: <input type=\"text\" class=\"span9\"></fieldset></form><a class=\"btn btn-danger\">Delete Contact</a>";
+		store += "Add to Group: <input type=\"text\" class=\"span9\" disabled></fieldset></form><a class=\"btn btn-danger\" disabled>Delete Contact</a>";
 	store += "</div></div></div>";
 
 /*
@@ -191,9 +191,75 @@ $("#Destory").click( function()
 
 
 
+$("#New").click( function()
+          {
+            //alert('This Works');
+            console.log("The Create Button has been clicked");
+
+            var $form = $(this);
+            var anMethod = "POST";
+            var aspect = getAspectID();
+           	var NewUser = getUser();
+            var utf = "%E2%9C%93";
+			var token = getToken();
+
+
+            var dataAddContact = new FormData();
+            dataAddContact.append('utf8', utf);
+            dataAddContact.append('aspect_id', aspect);
+            dataAddContact.append('person_id', NewUser);
+            dataAddContact.append('_method', anMethod);
+
+            var request = $.ajax({
+				url: 'https://pod.cscf.me/aspect_memberships.json',
+				type: "post",
+				beforeSend: function (xhr) {
+				     xhr.setRequestHeader('X-CSRF-Token', token);
+				},
+
+				data: dataAddContact,
+
+				processData: false,
+				contentType: false,
+				async: false,
+
+			});
+	window.location.reload();
+});
 
 
 
+function getUser()
+{
+	console.log("I am trying to find the new users ID");
+
+	var Answer;
+
+	var RegexForID = /Mentions._contactToMention\(\{"id":(.*),"guid"/
+	var matches;
+	var URLAddress = 'https://pod.cscf.me/u/';
+	var URLExtention = document.getElementById('UserEmail').value;
+	var Temp = URLExtention.indexOf("@");
+
+	if(Temp != -1){URLExtention = URLExtention.substring(0,Temp);}
+	//URLAddress.concat(URLExtention);
+
+	$.ajax({
+			async: false,
+	        type: 'GET',
+	        //url: 'pod.cscf.me/u/' + URLAddress,
+	        url: URLAddress + URLExtention,
+	        success: function(data) {
+				while ((matches = RegexForID.exec(data)) !== null)
+				{
+					console.log("Found User ID: " + matches[1]);
+					answer = matches[1];
+					break;
+				}
+			}
+		});
+	return(answer);
+}
 
 
 
