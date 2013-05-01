@@ -76,9 +76,18 @@ $("#send").submit(function (event)
 			{
 			  
 			
+<<<<<<< HEAD
 			}
 			else
 			{
+=======
+			
+				console.log("STEGO IT");
+			}
+			else
+			{
+				console.log("Please enter a password for Steganography");
+>>>>>>> origin/stu
 				$('#send')[0].reset();
 			}
 		}
@@ -86,12 +95,27 @@ $("#send").submit(function (event)
 		{
 			var encryptPassword = $('#encryptpass').val();
 			if (encryptPassword)
+<<<<<<< HEAD
 			{
 			
 			
 				text = encryptMessage(encryptPassword, text);
 		        sendRequest(utr,cont, recipientID, subject, text, com, token);
 				
+=======
+			{	
+				console.log("Encrypted Message Sent");
+				text =  encryptMessage(encryptPassword, text);
+				var data = new FormData();
+				data.append('utf8',utf);
+				data.append('contact_autocomplete',cont);
+				data.append('contact_ids', recipientID);
+				data.append('conversation[subject]', subject);
+				data.append('conversation[text]', text);
+				data.append('commit',com);
+				data.append('authenticity_token', token);
+				sendMessage(data);
+>>>>>>> origin/stu
 			}
 			else
 			{
@@ -101,9 +125,24 @@ $("#send").submit(function (event)
 		}
 		else
 		{
+<<<<<<< HEAD
 	        console.log("FUCK YOU CUNT");
 			sendRequest(utr,cont, recipientID, subject, text, com, token);
 	    }
+=======
+			console.log("Message Sent");
+			var data = new FormData();
+			data.append('utf8',utf);
+			data.append('contact_autocomplete',cont);
+			data.append('contact_ids', recipientID);
+			data.append('conversation[subject]', subject);
+			data.append('conversation[text]', text);
+			data.append('commit',com);
+			data.append('authenticity_token', token);
+			sendMessage(data);
+
+		}
+>>>>>>> origin/stu
 	}	
 	else
 	{
@@ -112,8 +151,8 @@ $("#send").submit(function (event)
 });
 
 
- function getToken() 
- {       
+function getToken() 
+{       
 	$.ajax
 	({
         async: false,
@@ -129,15 +168,41 @@ $("#send").submit(function (event)
 	return tok;
 }
 
-function encryptMessage(password, text) {
-    var encrypted = sjcl.encrypt(password,text);
-    console.log(encrypted);
-  //  encrypted =jQuery.parseJSON(encrypted);
-    var decrypted = sjcl.decrypt(password, encrypted);
-    console.log("decrypt" + decrypted);
-    return encrypted;
-    
+function encryptMessage(password, text) 
+{
+	var encrypted = sjcl.encrypt(password,text);
+	console.log(encrypted);
+	//encrypted =jQuery.parseJSON(encrypted);
+	var decrypted = sjcl.decrypt(password, encrypted);
+	console.log("decrypt" + decrypted);
+	return encrypted;
+}
 
+function sendMessage(data)
+{
+	// post the data
+	var request = $.ajax
+	({
+		url: "https://pod.cscf.me/conversations",
+		type: "post",
+		data:  data,
+
+		processData:false,
+		contentType: false,
+		async:false,
+	});
+
+	// callback handler that will be called regardless
+	// if the request failed or succeeded
+	request.always(function () 
+	{
+		// reenable the inputs
+		$inputs.prop("disabled", false);
+	});
+
+	// prevent default posting of form
+	event.preventDefault();
+	$('#send')[0].reset();
 }
 
 
