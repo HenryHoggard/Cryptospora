@@ -8,7 +8,7 @@
 			try {
 				var decrypted = sjcl.decrypt(password, message);
 				$('#ContentArea').css("background-color", "#c4ffc9");
-			    $('#ContentArea').text(decrypted); 
+			    $('#ContentArea').html(decrypted); 
 			}
 			catch(err)
 			{
