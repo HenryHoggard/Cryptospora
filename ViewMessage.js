@@ -15,7 +15,7 @@ var request;
 
  
 $.getJSON("https://pod.cscf.me/conversations/" + messageid+".json", function(json) {
-		dateTime = json.conversation.updated_at;
+		dateTime = prettyDate(json.conversation.updated_at);
         subject = json.conversation.subject;
 		
 		  //  $.each(json, function(arrayID,message) {
@@ -37,7 +37,6 @@ $.getJSON("https://pod.cscf.me/conversations/" + messageid+".json", function(jso
             
        // subject = message.conversation.subject;
 		username = username;
-//		dateTime = message.conversation.updated_at;
 		content = matches2[1]; 
         console.log(content);
  		
@@ -159,3 +158,4 @@ $("#delete").click( function()
 	window.open('inbox.html', '_self', false);
 	}
 );
+
