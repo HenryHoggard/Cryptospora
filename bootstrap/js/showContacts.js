@@ -1,4 +1,5 @@
 // Populate list of Users from Diaspora Json
+// Additional functions for buttons; Add Aspect, Remove Aspect, Add a user to an aspect, Remove a user from an aspect, Add a User
 // By Ryan McIntyre
 
 
@@ -36,8 +37,7 @@ for (var i = 0; i < ArrayOfContacts.length; i++) {
 document.getElementById('table1').innerHTML = store;
 
 
-
-
+//Function for adding a person to an aspect
 $("#Add").click( function()
           {
             //alert('This Works');
@@ -77,6 +77,7 @@ $("#Add").click( function()
 });
 
 
+//Function for Deleting a user from an aspect
 $("#Delete").click( function()
           {
             //alert('This Works');
@@ -117,7 +118,7 @@ $("#Delete").click( function()
 
 
 
-
+// Function for Creating an Aspect
 $("#Create").click( function()
           {
             //alert('This Works');
@@ -153,7 +154,7 @@ $("#Create").click( function()
 });
 
 
-
+// Function for Removing an Aspect
 $("#Destory").click( function()
           {
             //alert('This Works');
@@ -190,7 +191,7 @@ $("#Destory").click( function()
 
 
 
-
+//Function to add a new user
 $("#New").click( function()
           {
             //alert('This Works');
@@ -228,7 +229,7 @@ $("#New").click( function()
 });
 
 
-
+//Fuction get's the user's ID with use of Regex on their personal page
 function getUser()
 {
 	console.log("I am trying to find the new users ID");
@@ -263,7 +264,7 @@ function getUser()
 
 
 
-
+// Gets the User's ID based on the User's input
 function getUserID()
 {
 	var UEmail = document.getElementById('UserEmail').value;
@@ -282,6 +283,7 @@ function getUserID()
 	//alert('The Contact was not found - no Change will take place');
 }
 
+//Gets the aspect ID based on the user's input
 function getAspectID()
 {
 	var Aspect = document.getElementById('AspectName').value;
