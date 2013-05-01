@@ -37,11 +37,11 @@ $("#send").submit(function (event)
 			{
 			
 			
-				alert("STEGO IT");
+				console.log("STEGO IT");
 			}
 			else
 			{
-				alert("Please enter a password for Steganography");
+				console.log("Please enter a password for Steganography");
 				$('#send')[0].reset();
 			}
 		}
@@ -50,7 +50,7 @@ $("#send").submit(function (event)
 			var encryptPassword = $('#encryptpass').val();
 			if (encryptPassword)
 			{	
-				alert("Encrypted Message Sent");
+				console.log("Encrypted Message Sent");
 				text =  encryptMessage(encryptPassword, text);
 				var data = new FormData();
 				data.append('utf8',utf);
@@ -64,13 +64,13 @@ $("#send").submit(function (event)
 			}
 			else
 			{
-				alert("Please enter a password for Encyption");
+				console.log("Please enter a password for Encyption");
 				$('#send')[0].reset();
 			}
 		}
 		else
 		{
-			alert("Message Sent");
+			console.log("Message Sent");
 			var data = new FormData();
 			data.append('utf8',utf);
 			data.append('contact_autocomplete',cont);
@@ -85,7 +85,7 @@ $("#send").submit(function (event)
 	}	
 	else
 	{
-		alert("Could not find Username or Pod address please try again");
+		console.log("Could not find Username or Pod address please try again");
 	}
 });
 
