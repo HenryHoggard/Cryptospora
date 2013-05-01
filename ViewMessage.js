@@ -128,11 +128,6 @@ console.log(url);
 
 $("#delete").click( function()
    {
-    // alert('You have deleted this conversation');
-	 if (request1) {
-		request1.abort();
-	 }
-	 
 	 
 	var $form = $(this);			 
 	var utf = "%E2%9C%93"; 
