@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+  <head>
+
+    <title>View Message</title>
+    <!-- Bootstrap -->
+    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <link href="bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
+
+  <style type="text/css">
+      body {
+        width: 800px;
+		height:500px;
+		padding-top: 0px;
+        padding-bottom: 40px;
+        background-color: #f5f5f5;
+      }
+
+	  .form-create {
+        max-width: 500px;
+        min-width: 450px;
+        padding: 19px 29px 29px;
+        margin: 0 auto 20px;
+        background-color: #fff;
+        border: 1px solid #e5e5e5;
+        -webkit-border-radius: 5px;
+           -moz-border-radius: 5px;
+                border-radius: 5px;
+        -webkit-box-shadow: 0 1px 2px rgba(0,0,0,.05);
+           -moz-box-shadow: 0 1px 2px rgba(0,0,0,.05);
+                box-shadow: 0 1px 2px rgba(0,0,0,.05);
+      }
+
+	  .form-create .form-create-heading,.form-create {
+        margin-bottom: 10px;
+      }
+
+	  #ContentArea{
+	  word-wrap: break-word;
+	  background-color: #ffdee2;
+	  -webkit-border-radius: 5px;
+	     -moz-border-radius: 5px;
+            border-radius: 5px;
+        -webkit-box-shadow: 0 1px 2px rgba(0,0,0,.05);
+           -moz-box-shadow: 0 1px 2px rgba(0,0,0,.05);
+                box-shadow: 0 1px 2px rgba(0,0,0,.05);
+
+	  }
+
+	  textarea#contentReply{
+	  width: 435px;
+	  }
+
+
+
+	  </style>
+  </head>
+  <body>
+   <div class="navbar">
+    <div class="navbar-inner">
+      <div class="container">
+
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </a>
+
+         <ul class="nav">
+        <li class="active">
+          <a class="brand" href="#">Cryptospora</a>
+        </li>
+      <li><a href="inbox.html">Inbox</a></li>
+      <li><a href="sendmessage.html">Send Message</a></li>
+
+      <li><a href="contacts.html">Contacts</a></li>
+      <li><a href="settings.html">Settings</a></li>
+      </ul>
+
+
+
+        <!-- Everything you want hidden at 940px or less, place within here -->
+        <div class="nav-collapse"> Logged in as henry
+          <!-- .nav, .navbar-search, .navbar-form, etc -->
+        </div>
+
+      </div>
+    </div>
+</div>
+
+  <div class="container">
+  <div class="span2">
+
+
+      <form class="form-create" id="other" action="javascript:void(0);">
+        <h3 class="form-create-heading">View Message</h3>
+        <input type="text" id ="userField" class="input-block-level">
+		<input type="text" id="testSubject" class="input-block-level">
+		<input type="text" id="dateTime" class="input-block-level">
+		<div class="display" id="ContentArea"></div><br>
+		<input type="text" placeholder="Password" id="pass"><br>
+		<button class="btn" id = "decrypt">Decrypt Message</button>
+		<button class="btn-warning" id="delete" value = "delete">Delete Message</button>
+
+	</form>
+
+
+		<form class="form-create" id = "send">
+		<textarea name="message[text]" id="contentReply" cols="60" rows="3"> </textarea>
+		<br />
+        <button class="btn" value="Send" type="submit">Reply</button>
+        </form>
+
+
+		</div>
+
+      </form>
+    <script src="bootstrap/js/jquery.js"></script>
+    <script src="bootstrap/js/bootstrap.min.js"></script>
+    <script src="bootstrap/js/purl.js"></script>
+    <script src="bootstrap/js/pretty.js"></script>
+    <script src="ViewMessage.js"></script>
+    <script src="bootstrap/js/sjcl.js"></script>
+	<script src="decryptMessage.js"></script>
+  </body>
+</html>

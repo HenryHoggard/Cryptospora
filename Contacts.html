@@ -59,15 +59,33 @@ body {
 	</div>
 
 
-			<div class="span12">
+
+
 				<div class="well well-large">
-					<!--Top content-->
-					<form class = "pull-left">
-						<a class="btn">Add Contact </a> <!--Add Contact Button-->
-					</form>
-					<form class="pull-right">
-						Search Contact List: <input type="text" data-provide="typeahead"> <!--Search Contact Box-->
-					</form>
+					<div class="span11">
+						<form class="pull-left">
+							Email/Username: <input type="text" id="UserEmail" style="width:175px;"> <!--Name/Email Box-->
+						</form>
+						<form class="pull-right">
+							Aspect: <input type="text" id="AspectName" style="width:175px;"> <!--Aspect Box-->
+						</form>
+					</div>
+					<div class="span11">
+						<form class = "pull-left">
+							<a class="btn" id="Add">Add | User to Aspect</a> <!--Add Contact Button-->
+						</form>
+						<form class = "pull-right">
+							<a class="btn" id="Delete">Remove | User From Aspect</a> <!--Remove Contact Button-->
+						</form>
+					</div>
+					<div class="span11">
+						<form class = "pull-left">
+							<a class="btn" id="Create">Create | a new Aspect</a> <!--Add Aspect Button-->
+						</form>
+						<form class = "pull-right">
+							<a class="btn" id="Destory">Destory | an Aspect</a> <!--Remove Aspect Button-->
+						</form>
+					</div>
 				</div>
 
 				<div class="row-fluid">
@@ -98,4 +116,5 @@ body {
  <script src="bootstrap/js/getGroups.js"></script>
  <script src="bootstrap/js/buildContactDatabase.js"></script>
  <script src="bootstrap/js/showContacts.js"></script>
+
 </html>
