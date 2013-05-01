@@ -1,4 +1,6 @@
-// Populate view message with a message in Diaspora inbo
+// Populate view message with a message in Diaspora inbox
+ 
+ 
 
 var username = '';
 var subject = '';
@@ -9,17 +11,13 @@ var replyMessage='';
 var token = getToken();
 
 var messageid= $.url().param('messageid');
-console.log(messageid);
 // variable to hold request
 var request;
 
  
-$.getJSON("https://pod.cscf.me/conversations/" + messageid+".json", function(json) {
-		dateTime = json.conversation.updated_at;
-        subject = json.conversation.subject;
-		
-		  //  $.each(json, function(arrayID,message) {
-    //    $.each(message, function() {
+$.getJSON("https://pod.cscf.me/conversations.json", function(json) {
+    $.each(json, function(arrayID,message) {
+        $.each(message, function() {
                 // for every message, extract author of message,
         $.ajax({
             async: true,
@@ -34,13 +32,46 @@ $.getJSON("https://pod.cscf.me/conversations/" + messageid+".json", function(jso
                 else {
                      username = "Me";
                 }
-            
-       // subject = message.conversation.subject;
+           
+        subject = message.conversation.subject;
 		username = username;
-//		dateTime = message.conversation.updated_at;
+		dateTime = prettyDate(message.conversation.updated_at);
 		content = matches2[1]; 
-        console.log(content);
- 		
+ 
+ 		$("#delete").click( function()
+           {
+             alert('You have deleted this conversation');
+			 if (request1) {
+				request1.abort();
+			 }
+			 
+			 
+			var $form = $(this);			 
+			var utf = "%E2%9C%93"; 
+			var token = getToken();
+			var referer = messageid;
+			var method = "delete";
+			
+			var data1 = new FormData();
+			data1.append('utf8', utf);
+			data1.append('authenticity_token', token);
+			data1.append('Referer', referer);
+			data1.append('_method', method);
+			
+			var requestDelete = $.ajax({
+				url: 'https://pod.cscf.me/conversations/'+messageid+'/visibility',
+				type: "post",
+				data: data1,
+					
+				processData: false,
+				contentType: false,
+				async: false,
+				
+
+			});
+			window.open.replace('inbox.html', '_self', false);
+			}
+        );
  
         document.getElementById('testSubject').value = subject;
 		document.getElementById('userField').value = username;
@@ -87,6 +118,8 @@ $.getJSON("https://pod.cscf.me/conversations/" + messageid+".json", function(jso
 
 				});
 
+				alert('You have replied to this message');
+
 				// callback handler that will be called regardless
 				// if the request failed or succeeded
 				request.always(function () {
@@ -97,13 +130,13 @@ $.getJSON("https://pod.cscf.me/conversations/" + messageid+".json", function(jso
 				// prevent default posting of form
 				event.preventDefault();
 			});
-                          }
-		});       
+                                   }
+								   });       
  
-       });
-    //});
+        });
+    });
 	
-	//});
+});
 
 
 function getToken() 
@@ -122,40 +155,8 @@ $.ajax({
 		return result;
 	}		
 
+
+
+		
 var url = $.url(true).fparam('messageid');
 console.log(url);	
-
-$("#delete").click( function()
-   {
-    // alert('You have deleted this conversation');
-	 if (request1) {
-		request1.abort();
-	 }
-	 
-	 
-	var $form = $(this);			 
-	var utf = "%E2%9C%93"; 
-	var token = getToken();
-	var referer = messageid;
-	var method = "delete";
-	
-	var data1 = new FormData();
-	data1.append('utf8', utf);
-	data1.append('authenticity_token', token);
-	data1.append('Referer', referer);
-	data1.append('_method', method);
-	
-	var requestDelete = $.ajax({
-		url: 'https://pod.cscf.me/conversations/'+messageid+'/visibility',
-		type: "post",
-		data: data1,
-			
-		processData: false,
-		contentType: false,
-		async: false,
-		
-
-	});
-	window.open('inbox.html', '_self', false);
-	}
-);
