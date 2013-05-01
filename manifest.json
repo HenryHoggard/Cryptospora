@@ -4,15 +4,14 @@
   "manifest_version": 2,
   "description": "Encrypted Diaspora Messaging",
   "permissions": [
-   "tabs", "storage", "proxy","background",  "http://*/*", "https://*/*"
+   "tabs", "proxy","background", "http://*/*", "https://*/*"
 ],
  "content_scripts": [ {
-    "js": [ "jquery.min.js" ],
+    "js": [ "bootstrap/js/jquery.js" ],
     "matches": [ "http://*/*", "https://*/*"]
   }],
-  "options_page": "options.html",
 "browser_action": {
     "default_icon": "icon.png",
-    "default_popup": "Contacts.html" 
+    "default_popup": "inbox.html"
  }
 }
