@@ -22,6 +22,8 @@
 	theHTML += "</li>";
 
 
+//This gets the GroupURL, GroupName and stores it in the crome local storage
+
 	$.ajax({
 		async: false,
         type: 'GET',
@@ -53,9 +55,6 @@
 
 			  console.log(ArrayGroup[1]["GroupName"]);
 			  localStorage['StoredArrayGroups']=JSON.stringify(ArrayGroup); //Store Groups in LocalStorage
-
-			 // var Temp = JSON.parse(localStorage.StoredArrayGroups); //How To Retrieve Groups
-			 // console.log(Temp[1]["GroupName"]);
 
 			  theHTML += "</ul>";
 
