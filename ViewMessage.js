@@ -84,18 +84,24 @@ $.getJSON("https://pod.cscf.me/conversations/" + messageid+".json", function(jso
 					processData: false,
 					contentType: false,
 					async: false,
-
+                                        success: function() {
+                                            $('#success').html('<button type="button" class="close" data-dismiss="alert">&times;</button <strong>Success:</strong> Replied to message!');
+                                            $('#success').show();
+                                            console.log("test");
+                           
+                                        }
+                                       
 				});
 
 				// callback handler that will be called regardless
 				// if the request failed or succeeded
-				request.always(function () {
+			/*	request.always(function () {
 					// reenable the inputs
 					$inputs.prop("disabled", false);
-				});
+				});*/
 
 				// prevent default posting of form
-				event.preventDefault();
+				//event.preventDefault();
 			});
                           }
 		});       
@@ -147,6 +153,12 @@ $("#delete").click( function()
 		processData: false,
 		contentType: false,
 		async: false,
+                success: function() {
+                                            $('#success').html('<button type="button" class="close" data-dismiss="alert">&times;</button <strong>Success:</strong> Deleted Message!');
+                                            $('#success').show();
+                                            console.log("test");
+                           
+                                        }
 		
 
 	});

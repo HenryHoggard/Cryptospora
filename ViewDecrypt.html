@@ -95,6 +95,14 @@
 
       <form class="form-create" id="other" action="javascript:void(0);">
         <h3 class="form-create-heading">View Message</h3>
+        <div class="alert alert-error" style="display: none;" id="error">
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+            <strong>Warning!</strong> Best check yo self, you're not looking too good.
+        </div>
+    <div class="alert alert-success" style="display: none;" id="success">
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+            <strong>Warning!</strong> Best check yo self, you're not looking too good.
+        </div>
         <input type="text" id ="userField" class="input-block-level">
 		<input type="text" id="testSubject" class="input-block-level">
 		<input type="text" id="dateTime" class="input-block-level">
@@ -108,7 +116,7 @@
 	</form>
 
 
-		<form class="form-create" id = "send">
+		<form class="form-create" id = "send" action="javascript:void(0);">
 		<textarea name="message[text]" id="contentReply" cols="60" rows="3"> </textarea>
 		<br />
         <button class="btn" value="Send" type="submit">Reply</button>
