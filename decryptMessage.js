@@ -31,6 +31,7 @@ $("#decrypt").click(function()
 $("#desteg").click(function()
 {
 	destego();
+	$("#preview").hide();
 });
 
 function destego() 
@@ -108,6 +109,7 @@ var decode = function()
                 return escChars[c];
             });
         };
+		$('#ContentArea').css('background-color', '#c4ffc9');
         document.getElementById('ContentArea').innerHTML = escHtml(obj.text);
     }
 };
