@@ -60,7 +60,7 @@ $("#send").submit(function (event)
 	var token = getToken();
 	var id = $('#id').val();
 	var subject = $('#subject').val();
-	var text = $('#textarea').val();
+	var text = $('#message').val();
 	var utf = "%E2%9C%93";
 	var cont = "";
 	var com = "Send";
@@ -105,16 +105,6 @@ $("#send").submit(function (event)
 				//runs sendmessage function and parses through data
 				sendMessage(data);
 
-			
-			
-			
-			
-			
-			
-			
-			
-			
-				console.log("STEGO IT");
 			}
 			//if there is no password output error telling user
 			else
