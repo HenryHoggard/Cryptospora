@@ -1,8 +1,4 @@
-	window.onload = function() {
-    // add action to the file input
-    var input = document.getElementById('file');
-    input.addEventListener('change', importImage);
-	};
+	
 	var maxMessageSize = 1000;
 	
 	
@@ -34,18 +30,22 @@
 		
 		$("#desteg").click(function()
 		{
+			destego();
 			decode();
 		});
 		
 
 		
-var importImage = function(e) {
-    var reader = new FileReader();
+function destego(e) {
+	var pic = ($('img[alt="image"]').attr('src'));
+    var reader =  '<img src="'+pic+'">';
 
-    reader.onload = function(event) {
+
+	reader.onload = function(event) {
         // set the preview
         document.getElementById('preview').style.display = 'block';
-        document.getElementById('preview').src = event.target.result;
+        //document.getElementById('preview').src = event.target.result;
+		document.getElementById('preview').src = pic;
 
         // wipe all the fields clean
         document.getElementById('pass').value = '';
@@ -53,6 +53,8 @@ var importImage = function(e) {
 
         // read the data into the canvas element
         var img = new Image();
+		img = '<img src="'+pic+'">';
+		
         img.onload = function() {
             var ctx = document.getElementById('canvas').getContext('2d');
             ctx.canvas.width = img.width;
@@ -61,10 +63,8 @@ var importImage = function(e) {
 
             decode();
         };
-        img.src = event.target.result;
+        img.src = pic;
     };
-
-    reader.readAsDataURL(e.target.files[0]);
 };
 
 // encode the image and save it
@@ -77,10 +77,13 @@ var decode = function() {
     // decode the message with the supplied password
     var ctx = document.getElementById('canvas').getContext('2d');
     var imgData = ctx.getImageData(0, 0, ctx.canvas.width, ctx.canvas.height);
+	console.log(sjcl.hash.sha256.hash(password));
     var message = decodeMessage(imgData.data, sjcl.hash.sha256.hash(password));
-
     // try to parse the JSON
     var obj = null;
+	console.log(imgData);
+	
+	console.log("message" +message);
     try {
         obj = JSON.parse(message);
     } catch (e) {
@@ -90,7 +93,6 @@ var decode = function() {
             alert(passwordFail);
         }
     }
-
     // display the "reveal" view
     if (obj) {
 
