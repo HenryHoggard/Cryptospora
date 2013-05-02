@@ -1,13 +1,14 @@
 <!DOCTYPE html>
 <html>
   <head>
-
+     <!-- Set title of page -->
     <title>View Message</title>
     <!-- Bootstrap -->
     <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
     <link href="bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
 
-  <style type="text/css">
+  	<!--Set styles and parameters for this pages display -->
+  	<style type="text/css">
       body {
         width: 800px;
 		height:500px;
@@ -51,8 +52,6 @@
 	  width: 435px;
 	  }
 
-
-
 	  </style>
   </head>
   <body>
@@ -67,55 +66,59 @@
           <span class="icon-bar"></span>
         </a>
 
-         <ul class="nav">
-        <li class="active">
-          <a class="brand" href="#">Cryptospora</a>
-        </li>
-      <li><a href="inbox.html">Inbox</a></li>
-      <li><a href="sendmessage.html">Send Message</a></li>
+		<!-- Set menu bar headings and corresponding links to different pages -->
+        <ul class="nav">
+        <li class="active"><a class="brand" href="#">Cryptospora</a></li>
+      	<li><a href="inbox.html">Inbox</a></li>
+      	<li><a href="sendmessage.html">Send Message</a></li>
+      	<li><a href="contacts.html">Contacts</a></li>
+      	<li><a href="settings.html">Settings</a></li>
+      	</ul>
 
-      <li><a href="contacts.html">Contacts</a></li>
-      <li><a href="settings.html">Settings</a></li>
-      </ul>
-
-
-
-        <!-- Everything you want hidden at 940px or less, place within here -->
-        <div class="nav-collapse"> Logged in as henry
+        <!-- drop down menu display for welcome message -->
+        <div class="nav-collapse"> Welcome to Cryptospora
           <!-- .nav, .navbar-search, .navbar-form, etc -->
         </div>
-
       </div>
     </div>
-</div>
+` </div>
 
+  <!-- Set container for contents that will be displayed -->
   <div class="container">
   <div class="span2">
+     <!-- Setup form that will hold received message content and required fields for decryption/desteg -->
+     <form class="form-create" id="other" action="javascript:void(0);">
+       <h3 class="form-create-heading">View Message</h3>
+       <div class="alert alert-error" style="display: none;" id="error">
+       	<button type="button" class="close" data-dismiss="alert">&times;</button>
+       	<strong>Warning!</strong> Best check yo self, you're not looking too good.
+  	   </div>
+  	   <div class="alert alert-success" style="display: none;" id="success">
+    	 <button type="button" class="close" data-dismiss="alert">&times;</button>
+    	 <strong>Warning!</strong> Best check yo self, you're not looking too good.
+  	   </div>
+       <input type="text" id ="userField" class="input-block-level">
+	   <input type="text" id="testSubject" class="input-block-level">
+	   <input type="text" id="dateTime" class="input-block-level">
+	   <div class="display" id="ContentArea"></div><br>
+	   <input type="password" placeholder="Password" id="pass"><br>
+	   <img id='preview' class='preview hide' /><br>
+	   <button class="btn" id = "decrypt">Decrypt Message</button>
+	   <button class="btn" id = "desteg">Desteg Message</button>
+	   <button class="btn-warning" id="delete" value = "delete">Delete Message</button>
+	 </form>
 
+  	 <!-- Second form for making a quick reply to message you are reading -->
+	 <form class="form-create" id = "send" action="javascript:void(0);">
+	   <h4 class="form-create-heading">Quick Reply</h4>
+	   <textarea name="message[text]" id="contentReply" cols="60" rows="3"> </textarea>
+	   <br />
+       <button class="btn" value="Send" type="submit">Reply</button>
+     </form>
+	</div>
+    </form>
 
-      <form class="form-create" id="other" action="javascript:void(0);">
-        <h3 class="form-create-heading">View Message</h3>
-        <input type="text" id ="userField" class="input-block-level">
-		<input type="text" id="testSubject" class="input-block-level">
-		<input type="text" id="dateTime" class="input-block-level">
-		<div class="display" id="ContentArea"></div><br>
-		<input type="text" placeholder="Password" id="pass"><br>
-		<button class="btn" id = "decrypt">Decrypt Message</button>
-		<button class="btn-warning" id="delete" value = "delete">Delete Message</button>
-
-	</form>
-
-
-		<form class="form-create" id = "send">
-		<textarea name="message[text]" id="contentReply" cols="60" rows="3"> </textarea>
-		<br />
-        <button class="btn" value="Send" type="submit">Reply</button>
-        </form>
-
-
-		</div>
-
-      </form>
+    <!-- Scripts that are utilised by this page -->
     <script src="bootstrap/js/jquery.js"></script>
     <script src="bootstrap/js/bootstrap.min.js"></script>
     <script src="bootstrap/js/purl.js"></script>
@@ -123,5 +126,8 @@
     <script src="ViewMessage.js"></script>
     <script src="bootstrap/js/sjcl.js"></script>
 	<script src="decryptMessage.js"></script>
+    <!-- Canvas used for holding steganography image -->
+	<canvas id='canvas' class='hide'></canvas>
+
   </body>
 </html>
