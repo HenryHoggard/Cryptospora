@@ -25,14 +25,6 @@ for (var i = 0; i < ArrayOfContacts.length; i++) {
 		store += "Add to Group: <input type=\"text\" class=\"span9\" disabled></fieldset></form><a class=\"btn btn-danger\" disabled>Delete Contact</a>";
 	store += "</div></div></div>";
 
-/*
-	for(var index in ArrayOfContacts[i]) {
-		if(index != "ContactName" && index != "ContactAddress"){
-	  	console.log( index + " : " + ArrayOfContacts[i][index] + "<br />");
-  		}
-	}
-*/
-
 }
 document.getElementById('table1').innerHTML = store;
 
@@ -40,7 +32,6 @@ document.getElementById('table1').innerHTML = store;
 //Function for adding a person to an aspect
 $("#Add").click( function()
           {
-            //alert('This Works');
             console.log("The Add Button has been clicked");
 
             var $form = $(this);
@@ -80,7 +71,6 @@ $("#Add").click( function()
 //Function for Deleting a user from an aspect
 $("#Delete").click( function()
           {
-            //alert('This Works');
             console.log("The Delete Button has been clicked");
 
             var $form = $(this);
@@ -121,7 +111,6 @@ $("#Delete").click( function()
 // Function for Creating an Aspect
 $("#Create").click( function()
           {
-            //alert('This Works');
             console.log("The Create Button has been clicked");
 
             var $form = $(this);
@@ -157,7 +146,6 @@ $("#Create").click( function()
 // Function for Removing an Aspect
 $("#Destory").click( function()
           {
-            //alert('This Works');
             console.log("The Destory Button has been clicked");
 
             var $form = $(this);
@@ -194,7 +182,6 @@ $("#Destory").click( function()
 //Function to add a new user
 $("#New").click( function()
           {
-            //alert('This Works');
             console.log("The Create Button has been clicked");
 
             var $form = $(this);
@@ -235,7 +222,6 @@ function getUser()
 	console.log("I am trying to find the new users ID");
 
 	var Answer;
-
 	var RegexForID = /Mentions._contactToMention\(\{"id":(.*),"guid"/
 	var matches;
 	var URLAddress = 'https://pod.cscf.me/u/';
@@ -243,12 +229,10 @@ function getUser()
 	var Temp = URLExtention.indexOf("@");
 
 	if(Temp != -1){URLExtention = URLExtention.substring(0,Temp);}
-	//URLAddress.concat(URLExtention);
 
 	$.ajax({
 			async: false,
 	        type: 'GET',
-	        //url: 'pod.cscf.me/u/' + URLAddress,
 	        url: URLAddress + URLExtention,
 	        success: function(data) {
 				while ((matches = RegexForID.exec(data)) !== null)
@@ -280,7 +264,6 @@ function getUserID()
 			return(UserID);
 		}
 	}
-	//alert('The Contact was not found - no Change will take place');
 }
 
 //Gets the aspect ID based on the user's input
@@ -302,7 +285,6 @@ function getAspectID()
 			return(AspectID);
 		}
 	}
-	 //alert('The Aspect was not found - no Change will take place');
 }
 
 function getToken()
