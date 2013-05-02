@@ -29,8 +29,8 @@ var ArrayOfGroups = JSON.parse(localStorage.StoredArrayGroups); //How To Retriev
 console.log("Here 3: The Group is: " + ArrayOfGroups[1]["GroupName"]);
 
 
-
-// For Each Group [excluding all]
+//The following code:
+// For Each Group [excluding the 'all' group]
 // Get the Contacts on that Group's page [URL]
 	// For Each Person in our array
 		// If ArrayContact.Pod == FoundContact.Pod [handle]
