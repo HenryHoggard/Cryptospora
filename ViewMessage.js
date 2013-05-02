@@ -9,7 +9,6 @@ var replyMessage='';
 var token = getToken();
 
 var messageid= $.url().param('messageid');
-console.log(messageid);
 // variable to hold request
 var request;
 
@@ -38,7 +37,6 @@ $.getJSON("https://pod.cscf.me/conversations/" + messageid+".json", function(jso
        // subject = message.conversation.subject;
 		username = username;
 		content = matches2[1]; 
-        console.log(content);
  		
  
         document.getElementById('testSubject').value = subject;
@@ -47,8 +45,9 @@ $.getJSON("https://pod.cscf.me/conversations/" + messageid+".json", function(jso
 		
 		var decoded = $('<div/>').html(content).text();
 
-                console.log(decoded);
 		$("#ContentArea").html(content);
+		
+		
 		
 		//Grab content of new reply message 
 		document.getElementById('contentReply').value = replyMessage;
@@ -85,18 +84,24 @@ $.getJSON("https://pod.cscf.me/conversations/" + messageid+".json", function(jso
 					processData: false,
 					contentType: false,
 					async: false,
-
+                                        success: function() {
+                                            $('#success').html('<button type="button" class="close" data-dismiss="alert">&times;</button <strong>Success:</strong> Replied to message!');
+                                            $('#success').show();
+                                            console.log("test");
+                           
+                                        }
+                                       
 				});
 
 				// callback handler that will be called regardless
 				// if the request failed or succeeded
-				request.always(function () {
+			/*	request.always(function () {
 					// reenable the inputs
 					$inputs.prop("disabled", false);
-				});
+				});*/
 
 				// prevent default posting of form
-				event.preventDefault();
+				//event.preventDefault();
 			});
                           }
 		});       
@@ -124,7 +129,6 @@ $.ajax({
 	}		
 
 var url = $.url(true).fparam('messageid');
-console.log(url);	
 
 $("#delete").click( function()
    {
@@ -149,6 +153,12 @@ $("#delete").click( function()
 		processData: false,
 		contentType: false,
 		async: false,
+                success: function() {
+                                            $('#success').html('<button type="button" class="close" data-dismiss="alert">&times;</button <strong>Success:</strong> Deleted Message!');
+                                            $('#success').show();
+                                            console.log("test");
+                           
+                                        }
 		
 
 	});
