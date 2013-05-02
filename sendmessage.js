@@ -8,12 +8,14 @@ https://github.com/oakes/PixelJihad
 
 */
 
+//adds a listener to the browse button
 window.onload = function() 
 {		
     var input = document.getElementById('file');
     input.addEventListener('change', importImage);
 };
 
+//creates a function called import image which uses the image the user uploads
 var importImage = function(e) 
 {
     var reader = new FileReader();
@@ -87,8 +89,11 @@ $("#sendMessage").click(function()
             //if the password is found run steganography
             if (stegPassword)
             {
+                //encodes the text and returns a variable called imageText
                 var imageText = encode();
+                //creates a new formdata called data
                 var data = new FormData();
+                //appends the data to the form
                 data.append('utf8',utf);
                 data.append('contact_autocomplete',cont);
                 data.append('contact_ids', recipientID);
@@ -98,12 +103,14 @@ $("#sendMessage").click(function()
                 data.append('authenticity_token', token);
                 //runs sendmessage function and parses through data
                 sendMessage(data);
+                //outputs a success message
                 $("#success").html('<button type="button" class="close" data-dismiss="alert">&times;</button><strong>Success</strong>: Hidden Message Sent!');
                 $("#success").show();
             }
             //if there is no password output error telling user
             else
             {
+                //outputs an error message
                 $("#error").html('<button type="button" class="close" data-dismiss="alert">&times;</button><strong>Error</strong>: Please enter a password for Steganography!');
 				$("#error").show();
             }
@@ -116,8 +123,11 @@ $("#sendMessage").click(function()
             //if the password is found run encryption
             if (encryptPassword)
             {	
+                //encrypts the text and returns a variable called text
                 text =  encryptMessage(encryptPassword, text);
+                //creates a new formdata called data
                 var data = new FormData();
+                //appends the data to the form
                 data.append('utf8',utf);
                 data.append('contact_autocomplete',cont);
                 data.append('contact_ids', recipientID);
@@ -127,18 +137,22 @@ $("#sendMessage").click(function()
                 data.append('authenticity_token', token);
                 //runs sendmessage function and parses through data
                 sendMessage(data);
+                //outputs a success message
                 $("#success").html('<button type="button" class="close" data-dismiss="alert">&times;</button><strong>Success</strong>: Encrypted Message Sent!');
                 $("#success").show();
             }
             else
             {
+                //outputs an error message
                 $("#error").html('<button type="button" class="close" data-dismiss="alert">&times;</button><strong>Error</strong>: Please enter a password for Encyption');
                 $("#error").show();
             }
         }
         else
         {
+            //creates a new formdata called data
             var data = new FormData();
+            //appends the data to the form
             data.append('utf8',utf);
             data.append('contact_autocomplete',cont);
             data.append('contact_ids', recipientID);
@@ -146,20 +160,24 @@ $("#sendMessage").click(function()
             data.append('conversation[text]', text);
             data.append('commit',com);
             data.append('authenticity_token', token);
+            //runs sendmessage function and parses through data
             sendMessage(data);
+            //outputs a success message
             $("#success").html('<button type="button" class="close" data-dismiss="alert">&times;</button><strong>Success</strong>: Message Sent!');
             $("#success").show();
         }
     }	
     else
     {
+        //outputs an error message
         $("#error").html('<button type="button" class="close" data-dismiss="alert">&times;</button><strong>Error</strong>: Could not find Username or Pod address please try again!');
 		$("#error").show();
     }
+    //stops the form from auto reloading
     return false;
 });
 
-
+//function called get tocken which is used to get the authenticity token
 function getToken() 
 {       
     $.ajax
@@ -169,21 +187,27 @@ function getToken()
         url: 'https://pod.cscf.me/conversations',
         success: function(data) 
         {
-            var matches = data.match(/<meta content="(.*)" name="csrf-token" \/>/); // regex to extract it,
+            // uses regex to extract it
+            var matches = data.match(/<meta content="(.*)" name="csrf-token" \/>/);
             // if there are no matches, it must be a self message 
             tok = matches[1];
         }
     });	
+    //returns the authenticity token
     return tok;
 }
 
+//creates a function called encryptMessage which is used to encrypt the message
 function encryptMessage(password, text) 
 {
+    //runs external functions in the sjcl.js file
     var encrypted = sjcl.encrypt(password,text);
     var decrypted = sjcl.decrypt(password, encrypted);
+    //reutnrs the encrypted text
     return encrypted;
 }
 
+//creates a function called send message which parses through the data and posts the message
 function sendMessage(data)
 {
     // post the data
@@ -199,7 +223,7 @@ function sendMessage(data)
     });
 }
 
-
+//creates a function called checkRecipient which is used to check if the username or pod are on the users contact list
 function checkRecipient(ID)
 {
     $.ajax
@@ -209,10 +233,13 @@ function checkRecipient(ID)
         url: 'https://pod.cscf.me/conversations/new',
         success: function(data) 
         {
+            //sets result to not found by default
             result = "notfound";
-            while ((matches = regex.exec(data)) !== null)
+            //loops over each contact
+            while ((matches = regex.exec(data)) !== null) 
             {
-                var name = matches[2];
+            //if the pod or username match it sets the result to equal the ID
+                var name = matches[2]; 
                 if(name == ID)
                 {
                     result = matches[1];
@@ -220,11 +247,14 @@ function checkRecipient(ID)
             }
         }	
     });
+    //returns the new id
     return result;
 }
 
+//check to see which radio button has been clicked (normal text by default)
 $("input[type='radio']").change(function()
 { 
+    //if the steg radio butotn is checked it displays the relevant steganography fields
     if ($(this).val()=="steg")
     {
         $("#file").show();
@@ -233,7 +263,7 @@ $("input[type='radio']").change(function()
         steganography = true;
         encryption = false;
     }
-    //if the encrypt radio button is check it displays the relevant encryption fields
+    //if the encrypt radio button is checked it displays the relevant encryption fields
     else if ($(this).val()=="encrypt")
     {
         $("#file").hide();
@@ -243,6 +273,7 @@ $("input[type='radio']").change(function()
         encryption = true;
     }
     else
+    //when the normal text field is checked it hides the steganography and encryption fields
     {
         $("#file").hide(); 
         $("#password").hide(); 
