@@ -63,7 +63,7 @@ var username = [];
 			"sLengthMenu": "_MENU_ records per page"
 		}
 	} );
-       //oTable.fnSort( [3,'asc'] );
+        oTable.fnSort( [ [4,'asc'] ] );      
 } );
 
                        $.extend( $.fn.dataTableExt.oStdClasses, {
