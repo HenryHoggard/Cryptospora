@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-  <head>
+    <head>
     <title>Create Message</title>
     <!-- Bootstrap -->
     <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
@@ -57,7 +57,7 @@
       <li><a href="inbox.html">Inbox</a></li>  
       <li><a href="template.html">Send Message</a></li>  
 
-      <li><a href="contacts.html">Contacts</a></li>  
+      <li><a href="Contacts.html">Contacts</a></li>  
       <li><a href="settings.html">Settings</a></li>      </ul>  
                   
       
@@ -72,8 +72,12 @@
 </div>   
 
   <div class="container">
-      <form class="form-create" id="send">
+      <form class="form-create" id="other">
         <h2 class="form-create-heading">Create Message</h2>
+        <div class="alert alert-error" style="display: none;" id="error">
+		</div>
+		<div class="alert alert-success" style="display: none;" id="success">
+		</div>
         <input type="text" class="input-block-level" placeholder="To" name="id" id="id">
 		<input type="text" class="input-block-level" placeholder="Subject" name="subject" id="subject">
 		<textarea name="message" id="message" columns="60" rows="5"></textarea></br>
@@ -84,8 +88,7 @@
 		<img id='preview' class='preview hide' />
 		<input type="text" class="input-block-level" placeholder="Password" name="encryptpass" id="encryptpass" style="display:none;"></br>
 		<input type="text" class="input-block-level" placeholder="Password" name="password" id="password" style="display:none;"></br>
-		
-        <button class="btn" value="Send" type="submit">Send Message</button>
+        <button class="btn" id="sendMessage">Send Message</button></br></br>
       </form>	
     <script src="bootstrap/js/jquery.js"></script>
     <script src="bootstrap/js/sjcl.js"></script>
