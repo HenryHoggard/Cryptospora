@@ -15,6 +15,7 @@ $.getJSON("https://pod.cscf.me/contacts.json", function(json) {
 		ArrayContact[i] = {};
 		ArrayContact[i]["ContactName"] = Person.name;
 		ArrayContact[i]["ContactAddress"] = Person.handle;
+		ArrayContact[i]["ContactID"] = Person.id;
 		console.log("Here 1: " + ArrayContact[i]["ContactName"]);
 		i += 1;
 
