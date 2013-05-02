@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html>
-  <head>
+    <head>
     <title>Create Message</title>
     <!-- Bootstrap -->
     <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <!-- CSS file used to format the form -->
 	<style type="text/css">
       body {
         width: 700px;
@@ -39,6 +40,7 @@
     <link href="bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
   </head>
   <body>
+  <!-- creates the navbar which links to other pages in the extension -->
    <div class="navbar">  
   <div class="navbar-inner">  
     <div class="container">  
@@ -55,9 +57,9 @@
         <a class="brand" href="#">Cryptospora</a>  
       </li>  
       <li><a href="inbox.html">Inbox</a></li>  
-      <li><a href="template.html">Send Message</a></li>  
+      <li><a href="sendmessage.html">Send Message</a></li>  
 
-      <li><a href="contacts.html">Contacts</a></li>  
+      <li><a href="Contacts.html">Contacts</a></li>  
       <li><a href="settings.html">Settings</a></li>      </ul>  
                   
       
@@ -70,22 +72,33 @@
     </div>  
   </div>  
 </div>   
-
+<!-- creates a div which contains all the form elements -->
   <div class="container">
-      <form class="form-create" id="send">
+      <form class="form-create" id="other">
         <h2 class="form-create-heading">Create Message</h2>
+        <!-- used to alert error messages -->
+        <div class="alert alert-error" style="display: none;" id="error">
+		</div>
+        <!-- used to alert success messages -->
+		<div class="alert alert-success" style="display: none;" id="success">
+		</div>
+        <!-- the user inputs data into these text boxes and text areas -->
         <input type="text" class="input-block-level" placeholder="To" name="id" id="id">
 		<input type="text" class="input-block-level" placeholder="Subject" name="subject" id="subject">
 		<textarea name="message" id="message" columns="60" rows="5"></textarea></br>
+        <!-- these radio buttons are used to run the appropriate code -->
 		<input type="radio" name="option" id="Normal" checked="checked" value="normal"/>Normal Text
 		<input type="radio" name="option" id="Encryption" value="encrypt">Use Encryption
 		<input type="radio" name="option" id="Steganography" value="steg">Use Steganography</br></br>
+        <!-- this is where the user browses for their image -->
 		<input type="file" id="file" name="file" style="display:none;"></br>
+        <!-- this previews the image -->
 		<img id='preview' class='preview hide' />
+        <!-- this is where the user types in the password for encryption or steganography depending which radio button they pressed -->
 		<input type="text" class="input-block-level" placeholder="Password" name="encryptpass" id="encryptpass" style="display:none;"></br>
 		<input type="text" class="input-block-level" placeholder="Password" name="password" id="password" style="display:none;"></br>
-		
-        <button class="btn" value="Send" type="submit">Send Message</button>
+        <!-- the button linked to send the messages -->
+        <button class="btn" id="sendMessage">Send Message</button></br></br>
       </form>	
     <script src="bootstrap/js/jquery.js"></script>
     <script src="bootstrap/js/sjcl.js"></script>
@@ -94,6 +107,7 @@
 	<script src="sendmessage.js"></script>
 	<script src="sjcl.js"></script>
 	
+    <!-- this canvas is used for the steganography -->
 	<canvas id='canvas' class='hide'></canvas>
 	
   </body>
